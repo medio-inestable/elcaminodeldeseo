@@ -2,7 +2,7 @@ extends KinematicBody
 
 export var gravity = -9.2
 export var wheel_base = 0.6
-export var steering_limit = 5.0
+export var steering_limit = 0.5
 export var engine_power = 7.0
 export var braking = -9.0
 export var friction = -2.0
@@ -19,7 +19,7 @@ func _physics_process(delta):
 		apply_friction(delta)
 		calculate_steering(delta)
 	acceleration.y = gravity
-	velocity += acceleration * delta
+	velocity += acceleration * delta 
 	velocity = move_and_slide_with_snap(velocity,
 				-transform.basis.y, Vector3.UP, true)
 
