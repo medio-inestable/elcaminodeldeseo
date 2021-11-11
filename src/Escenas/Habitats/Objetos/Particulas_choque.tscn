@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=2]
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0.294574, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0.72549, 0.301961, 0.403922 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 2.7108, 0, 0, Vector2( 1, 1 ), 0.651164, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+direction = Vector3( 0, 1, 0 )
+spread = 90.0
+initial_velocity = 7.84
+damping = 12.16
+scale_curve = SubResource( 2 )
+color_ramp = SubResource( 6 )
+hue_variation_random = 0.3
+
+[sub_resource type="SpatialMaterial" id=7]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 2
+params_billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id=4]
+material = SubResource( 7 )
+
+[node name="Particulas_choque" type="Particles"]
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 0.66
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 4 )

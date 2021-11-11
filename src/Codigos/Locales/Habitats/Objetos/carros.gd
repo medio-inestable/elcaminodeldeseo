@@ -14,10 +14,12 @@ var velocity = Vector3.ZERO
 var steer_angle = 0.0
 
 func _physics_process(delta):
+	acceleration = Vector3.ZERO
 	if is_on_floor():
+		acceleration = -transform.basis.z * engine_power * 10
 		get_input()
 		apply_friction(delta)
-		calculate_steering(delta)
+#		calculate_steering(delta)
 	acceleration.y = gravity
 	velocity += acceleration * delta 
 	velocity = move_and_slide_with_snap(velocity,
@@ -31,19 +33,24 @@ func apply_friction(delta):
 	var drag_force = velocity * velocity.length() * drag * delta
 	acceleration += drag_force + friction_force
 	
-func calculate_steering(delta):
+func calculate_steering(delta):	
 	var rear_wheel = transform.origin + transform.basis.z * wheel_base / 2.0
 	var front_wheel = transform.origin - transform.basis.z * wheel_base / 2.0
 	rear_wheel += velocity * delta
 	front_wheel += velocity.rotated(transform.basis.y, steer_angle) * delta
-	var new_heading = rear_wheel.direction_to(front_wheel)
-	
+	var new_heading = rear_wheel.direction_to(front_wheel)	
 	var d = new_heading.dot(velocity.normalized())
 	if d > 0:
 		velocity = new_heading * velocity.length()
 	if d < 0:
 		velocity = -new_heading * min(velocity.length(), max_speed_reverse)
 	look_at(transform.origin + new_heading, transform.basis.y)
+
+
+func rotate_body_right(body):
+	body.rotate_z(0.3)
+	pass
+
 	
 func get_input():
 	pass

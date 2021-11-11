@@ -1,0 +1,148 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Recursos/Graficos/Modelos/TsuruAlterado.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Codigos/Locales/Habitats/Objetos/Carro.gd" type="Script" id=2]
+[ext_resource path="res://Codigos/Locales/Habitats/Objetos/SpringArm.gd" type="Script" id=3]
+[ext_resource path="res://Escenas/Habitats/Objetos/Particulas_choque.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Escenas/Habitats/Objetos/Particulas_gira.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Escenas/Habitats/Objetos/Particulas_gira_derecha.tscn" type="PackedScene" id=6]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 1.35374
+height = 2.49151
+
+[sub_resource type="BoxShape" id=2]
+
+[sub_resource type="Animation" id=3]
+resource_name = "Choca"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Tsuru/TsuruAlterado:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 0.277393, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -90, 0 ), Vector3( 0, 990, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Tsuru:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 0.378929, 1.93187 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -720, 0, 720 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Tsuru:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1.2, 1.6, 2, 2.4 ),
+"transitions": PoolRealArray( 0.615572, 1.51572, 0.406126, 0.757858, 0.482968, 0.68302, 0.594604 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 2.5, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 2, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 1.5, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Particulas_choque:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:_rango_shake")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 3 ),
+"transitions": PoolRealArray( 0.517632, 2.73208, 1 ),
+"update": 0,
+"values": [ 16.0, 0.4, 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("SpringArm:spring_length")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 0.7 ),
+"transitions": PoolRealArray( 0.353554, 1.56917, 1 ),
+"update": 0,
+"values": [ 8.0, 1.0, 8.0 ]
+}
+
+[sub_resource type="CubeMesh" id=4]
+
+[sub_resource type="SpatialMaterial" id=5]
+vertex_color_is_srgb = true
+albedo_color = Color( 0, 0, 0, 1 )
+
+[node name="Carro" type="KinematicBody"]
+collision_mask = 0
+script = ExtResource( 2 )
+speed = 20.0
+_rango_shake = 16.0
+
+[node name="Tsuru" type="Spatial" parent="."]
+
+[node name="TsuruAlterado" parent="Tsuru" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.615305, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.656971, 0, 0, 0, 1, 0, 0.532259, 0 )
+shape = SubResource( 1 )
+
+[node name="Particulas_choque" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18176, 0 )
+
+[node name="Particulas_gira" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.952858, 0, -0.440326 )
+
+[node name="Particulas_gira_derecha" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05673, 0, -0.432631 )
+
+[node name="SpringArm" type="SpringArm" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.885767, 0.464131, 0, -0.464131, 0.885767, 0, 1.29678, 0 )
+spring_length = 8.0
+margin = 0.2
+script = ExtResource( 3 )
+
+[node name="Camera" type="Camera" parent="SpringArm"]
+fov = 85.6
+far = 1000.0
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Choca = SubResource( 3 )
+
+[node name="CSGMesh" type="CSGMesh" parent="."]
+transform = Transform( 395.791, 0, 0, 0, 143.998, 0, 0, 0, 1, 0, 0, -183.319 )
+mesh = SubResource( 4 )
+material = SubResource( 5 )
+
+[connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]
