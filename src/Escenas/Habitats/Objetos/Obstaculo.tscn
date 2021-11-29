@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Recursos/Graficos/Sprites/roca.png" type="Texture" id=1]
+[ext_resource path="res://Recursos/Graficos/Materiales/obstaculos/vaca.png" type="Texture" id=1]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -26,7 +26,7 @@ collision_mask = 0
 contact_monitor = true
 
 [node name="CSGMesh" type="CSGMesh" parent="."]
-transform = Transform( -9.23602, 3.0638e-07, 1.33923e-14, 0, -3.53904e-07, 8.09639, 2.30395e-07, 1, 4.37114e-08, 0, 4.38112, 0 )
+transform = Transform( -9.23602, 3.0638e-07, 1.33923e-14, 0, -3.53904e-07, 8.09639, 2.30395e-07, 1, 4.37114e-08, 0, 1.46979, 0 )
 mesh = SubResource( 1 )
 material = SubResource( 2 )
 

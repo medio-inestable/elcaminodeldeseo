@@ -1,10 +1,10 @@
 [gd_resource type="ParticlesMaterial" load_steps=3 format=2]
 
-[sub_resource type="Curve" id=3]
+[sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0.951643 ), 0.0, 0.175, 0, 0, Vector2( 1, 0 ), -0.251138, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=4]
-curve = SubResource( 3 )
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
 
 [resource]
 direction = Vector3( 1, 1, 1 )
@@ -12,4 +12,4 @@ spread = 30.0
 gravity = Vector3( 0, -45, 0 )
 initial_velocity = 17.28
 scale = 0.5
-scale_curve = SubResource( 4 )
+scale_curve = SubResource( 2 )
