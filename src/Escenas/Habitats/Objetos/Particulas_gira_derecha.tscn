@@ -3,6 +3,7 @@
 [ext_resource path="res://Recursos/Graficos/Materiales/Particulas_gira_derecha.tres" type="Material" id=1]
 
 [sub_resource type="SpatialMaterial" id=1]
+vertex_color_use_as_albedo = true
 params_billboard_mode = 2
 params_billboard_keep_scale = true
 

@@ -142,6 +142,7 @@ anims/Choca = SubResource( 3 )
 
 [node name="CSGMesh" type="CSGMesh" parent="."]
 transform = Transform( 395.791, 0, 0, 0, 143.998, 0, 0, 0, 1, 0, 0, -183.319 )
+visible = false
 mesh = SubResource( 4 )
 material = SubResource( 5 )
 

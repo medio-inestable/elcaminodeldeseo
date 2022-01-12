@@ -29,12 +29,15 @@ func _physics_process(delta):
 	var move_direction := Vector3.ZERO	
 	move_direction.x = Input.get_action_strength("steer_right") - Input.get_action_strength("steer_left")
 	
+	rotation_degrees.y += -rad2deg(move_direction.x*4)*delta
+	
+	
 #	Rotacion del spring arm para dar movimiento de camara distinto del carro
 	_spring_arm.rotation_degrees.y += -rad2deg(move_direction.x*4)*delta
 	_spring_arm.rotation_degrees.y -= _spring_arm.rotation_degrees.y*delta*6.5
 	
 #	Aqui solamente avanzas para adelante y solo dando break pues desaceleras
-	move_direction.z = (Input.get_action_strength("break")*2) - 1 
+	move_direction.z = (Input.get_action_strength("brake")*2) - 1 
 	move_direction = move_direction.rotated(Vector3.UP, _spring_arm.rotation.y).normalized()
 	
 #	En estas lineas rota el auto para que se vea mas alocado
@@ -60,7 +63,9 @@ func _physics_process(delta):
 		_camera.v_offset = random_offset_2
 	
 #	En esta linea hace la parte de aceleracion ya completa con el move_and_slide
+	
 	_velocity = move_and_slide_with_snap(_velocity, _snap_vector, Vector3.UP, true)	
+	
 	
 
 #Cuando entra al rango del objeto llama la funcion choca()
