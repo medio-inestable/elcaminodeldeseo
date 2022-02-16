@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Recursos/Graficos/Modelos/pisorecto.gltf" type="PackedScene" id=1]
+
+[node name="pisorecto" instance=ExtResource( 1 )]
+transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 0 )
