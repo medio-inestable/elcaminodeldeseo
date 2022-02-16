@@ -13,6 +13,8 @@ onready var _particulas_gira_derecha: Particles = $TsuruAlterado/Particulas_gira
 onready var _polvo: Particles = $TsuruAlterado/Polvo
 onready var _colision_carro = $ColisionCarro
 
+export(Vector3) var target_position
+
 # Where to place the car mesh relative to the sphere
 var sphere_offset = Vector3(0, 0, 0)
 var camara_offset = Vector3(0, 8.0, 0)
@@ -36,6 +38,11 @@ var body_tilt = 50
 var piso = false
 var camara_transform
 
+var forward_amount := 0.0
+var turn_amount := 0.0
+var dirToMovePosition:Vector3
+var dot:float
+var angleToDir:float
 
 
 func _ready():
@@ -52,23 +59,50 @@ func _physics_process(_delta):
 	
 func _process(delta):
 	# Can't steer/accelerate when in the air
-	_colision_carro.transform.origin = car_mesh.transform.origin
+	
+#	print(ball.translation)
+	_set_target_position(target_position)
+	
+	forward_amount = 0.0
+	turn_amount = 0.0
+	
+	dirToMovePosition = (target_position - car_mesh.global_transform.origin).normalized()
+	dot = dirToMovePosition.dot(car_mesh.global_transform.basis.z)
+	
+#	
+	if dot>0:
+		forward_amount = 1.0
+	else:
+		forward_amount = -1.0
+		
+	angleToDir = car_mesh.global_transform.basis.z.signed_angle_to(dirToMovePosition,Vector3.UP)
+	
+	if angleToDir > 0:
+		turn_amount = 1.0
+	else:
+		turn_amount = -1.0
+	
+	
 	
 	if not piso:
-#		print(ground_ray)
+#		
 		return
 	# Get accelerate/brake input
 	speed_input = 0
-	speed_input += Input.get_action_strength("brake") - Input.get_action_strength("accelerate") 
-#	speed_input -= Input.get_action_strength("brake")
+	speed_input += forward_amount
+#	speed_input += Input.get_action_strength("brake") - Input.get_action_strength("accelerate") 
+#	speed_input -= 
 	speed_input *= acceleration
 	# Get steering input
 	rotate_input = 0
-	rotate_input += Input.get_action_strength("steer_left")
-	rotate_input -= Input.get_action_strength("steer_right")
+	rotate_input += turn_amount
+#	rotate_input += Input.get_action_strength("steer_left") - Input.get_action_strength("steer_right")
+#	rotate_input -= Input.get_action_strength("steer_right")
+	
 	rotate_input *= deg2rad(steering)	
 	right_wheel.rotation.y = rotate_input*2 - 90
 	left_wheel.rotation.y = rotate_input*2 - 90
+
 
 	if ball.linear_velocity.length() > turn_stop_limit:
 		var new_basis = car_mesh.global_transform.basis.rotated(car_mesh.global_transform.basis.y, rotate_input)
@@ -99,19 +133,19 @@ func align_with_y(xform, new_y):
 
 func _input(event):
 	if !_chocando:
-		if Input.is_action_just_pressed("steer_left") && !_girando:
+		if turn_amount > 0 :
 			_particulas_gira.emitting = true
 			_polvo.emitting = true
 			_girando = true
-		if Input.is_action_just_released("steer_left"):
+		if turn_amount == 0:
 			_particulas_gira.emitting = false
 			_polvo.emitting = false
 			_girando = false
-		if Input.is_action_just_pressed("steer_right") && !_girando:
+		if turn_amount < 0 :
 			_particulas_gira_derecha.emitting = true
 			_polvo.emitting = true
 			_girando = true
-		if Input.is_action_just_released("steer_right"):
+		if turn_amount == 0:
 			_particulas_gira_derecha.emitting = false
 			_polvo.emitting = false
 			_girando = false
@@ -119,3 +153,7 @@ func _input(event):
 func _on_Area_body_entered(body):
 	piso = true
 	print(body.name)
+	
+func _set_target_position(target_position):
+	target_position = target_position
+	pass

@@ -7,7 +7,6 @@
 [sub_resource type="SpatialMaterial" id=2]
 flags_transparent = true
 params_cull_mode = 2
-params_billboard_mode = 2
 params_billboard_keep_scale = true
 albedo_texture = ExtResource( 1 )
 distance_fade_mode = 3
@@ -15,22 +14,22 @@ distance_fade_min_distance = 0.0
 distance_fade_max_distance = 8.9
 
 [sub_resource type="BoxShape" id=3]
-extents = Vector3( 2.56629, 1, 1 )
+extents = Vector3( 5.82781, 1.61492, 1.44608 )
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 5.635, 2.77016, 4.19075 )
 
 [node name="Obstaculo" type="RigidBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01318, 0 )
-collision_mask = 0
 contact_monitor = true
 
 [node name="CSGMesh" type="CSGMesh" parent="."]
-transform = Transform( -9.23602, 3.0638e-07, 1.33923e-14, 0, -3.53904e-07, 8.09639, 2.30395e-07, 1, 4.37114e-08, 0, 1.46979, 0 )
+transform = Transform( 9.23602, -3.0638e-07, 7.07809e-07, 8.07439e-07, 3.53904e-07, -8.09639, 2.30395e-07, 1, 4.37114e-08, 0, 1.46979, 0 )
 mesh = SubResource( 1 )
 material = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21584, 0 )
 shape = SubResource( 3 )
 
 [node name="Area" type="Area" parent="."]

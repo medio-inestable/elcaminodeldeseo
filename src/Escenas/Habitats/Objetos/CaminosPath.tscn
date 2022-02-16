@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Recursos/Graficos/Sprites/icon.png" type="Texture" id=1]
+[ext_resource path="res://Escenas/Habitats/Objetos/Carro_esfera_npc.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Escenas/Habitats/Objetos/Cubo_x.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Escenas/Habitats/Objetos/Carro_esfera.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Curve3D" id=1]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -1.26307, 0, -2.42898, 0, 0, 0, 0, 0, 0, -2.41755, 0, -0.908724, 0, 0, 0, 0, 0, 0, -2.96621, 0, 0.714405, 0, 0, 0, 0, 0, 0, -1.89175, 0, 2.18894, 0, 0, 0, 0, 0, 0, 1.4231, 0, 2.4747, 0, 0, 0, 0, 0, 0, 3.78921, 0, 1.49168, 0, 0, 0, 0, 0, 0, 4.06354, 0, 0.00571507, 0, 0, 0, 0, 0, 0, 3.17196, 0, -1.21735, 0, 0, 0, 0, 0, 0, 1.75458, 0, -1.10304, 0, 0, 0, 0, 0, 0, 1.34308, 0, 0.748697, 0, 0, 0, 0, 0, 0, -0.485796, 0, 1.36594, 0, 0, 0, 0, 0, 0, -0.908724, 0, -0.0857288, 0, 0, 0, 0, 0, 0, 0.142881, 0, -1.32022, 0, 0, 0, 0, 0, 0, 0.405782, 0, -2.34897, 0, 0, 0, 0, 0, 0, -1.26307, 0, -2.42898 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1998.64, 0.992292, 214.693 )
+
+[sub_resource type="CubeMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = ExtResource( 1 )
+
+[node name="CaminosPath" type="Spatial"]
+
+[node name="Path" type="Path" parent="."]
+curve = SubResource( 1 )
+
+[node name="Piso2" type="StaticBody" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -1.05073, 0 )
+collision_layer = 1025
+collision_mask = 1025
+
+[node name="CollisionShape" type="CollisionShape" parent="Piso2"]
+shape = SubResource( 2 )
+
+[node name="CSGMesh" type="CSGMesh" parent="Piso2"]
+transform = Transform( 2000, 0, 9.15733e-06, 0, 1, 0, -8.64037e-05, 0, 209.68, 0, 0, 0 )
+mesh = SubResource( 3 )
+material = SubResource( 4 )
+
+[node name="Carro_esfera_npc" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.66458, 0 )
+target_position = Vector3( -35, 0, 35 )
+
+[node name="Carro_esfera" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 10.8509, 4.97323, 8.27643 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.724629, 0.689139, 0, -0.689139, 0.724629, 0, 26.1105, 73.7586 )
+far = 1000.0
+
+[node name="Cubo_x" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20 )
