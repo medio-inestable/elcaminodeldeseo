@@ -52,7 +52,7 @@ func _physics_process(_delta):
 	
 func _process(delta):
 	# Can't steer/accelerate when in the air
-	_colision_carro.transform.origin = car_mesh.transform.origin
+#	_colision_carro.transform.origin = car_mesh.transform.origin
 	
 	if not piso:
 #		print(ground_ray)
@@ -84,7 +84,7 @@ func _process(delta):
 		car_mesh.rotation.z = lerp(car_mesh.rotation.z, t, 10 * delta)
 #		spring.rotation.z = lerp(spring.rotation.z, t, 10 * delta)
 
-	_colision_carro.transform.basis = car_mesh.global_transform.basis
+#	_colision_carro.transform.basis = car_mesh.global_transform.basis
 	var n = ground_ray.get_collision_normal()
 	var xform = align_with_y(car_mesh.global_transform, n.normalized())
 	car_mesh.global_transform = car_mesh.global_transform.interpolate_with(xform, 10 * delta)
