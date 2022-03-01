@@ -11,11 +11,11 @@ onready var left_wheel = $TsuruAlterado/Llanta_D_Izq
 onready var _particulas_gira: Particles = $TsuruAlterado/Particulas_gira
 onready var _particulas_gira_derecha: Particles = $TsuruAlterado/Particulas_gira_derecha
 onready var _polvo: Particles = $TsuruAlterado/Polvo
-onready var _colision_carro = $ColisionCarro
+#onready var _colision_carro = $ColisionCarro
 
 # Where to place the car mesh relative to the sphere
 var sphere_offset = Vector3(0, 0, 0)
-var camara_offset = Vector3(0, 8.0, 0)
+var camara_offset = Vector3(0, 0, 0)
 var _chocando = false
 var _girando = false
 # Engine power
@@ -54,14 +54,14 @@ func _process(delta):
 	# Can't steer/accelerate when in the air
 #	_colision_carro.transform.origin = car_mesh.transform.origin
 	
-	if not piso:
-#		print(ground_ray)
+	if not piso:	
 		return
 	# Get accelerate/brake input
 	speed_input = 0
 	speed_input += Input.get_action_strength("brake") - Input.get_action_strength("accelerate") 
 #	speed_input -= Input.get_action_strength("brake")
 	speed_input *= acceleration
+	
 	# Get steering input
 	rotate_input = 0
 	rotate_input += Input.get_action_strength("steer_left")
@@ -75,14 +75,15 @@ func _process(delta):
 		var new_basis_spring = spring.global_transform.basis.rotated(spring.global_transform.basis.y, rotate_input)		
 		car_mesh.global_transform.basis = car_mesh.global_transform.basis.slerp(new_basis, turn_speed * delta)
 		car_mesh.global_transform = car_mesh.global_transform.orthonormalized()
-		spring.global_transform.basis = spring.global_transform.basis.slerp(new_basis_spring, turn_speed * delta)
-		spring.global_transform = spring.global_transform.orthonormalized()
+#		spring.global_transform.basis = spring.global_transform.basis.slerp(new_basis, turn_speed * delta)
+#		spring.global_transform = spring.global_transform.orthonormalized()
+		spring.rotation.y = car_mesh.rotation.y
 		# rotate wheels for effect
 
 		# tilt body for effect
 		var t = -rotate_input*6 * ball.linear_velocity.length() / body_tilt
 		car_mesh.rotation.z = lerp(car_mesh.rotation.z, t, 10 * delta)
-#		spring.rotation.z = lerp(spring.rotation.z, t, 10 * delta)
+#		spring.rotation.z = lerp(spring.rotation.z, -t, 10 * delta)
 
 #	_colision_carro.transform.basis = car_mesh.global_transform.basis
 	var n = ground_ray.get_collision_normal()
@@ -117,5 +118,4 @@ func _input(event):
 			_girando = false
 
 func _on_Area_body_entered(body):
-	piso = true
-	print(body.name)
+	piso = true	

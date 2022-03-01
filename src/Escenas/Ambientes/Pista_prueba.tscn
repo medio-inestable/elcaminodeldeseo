@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Escenas/Habitats/Objetos/Carro_esfera.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Escenas/Habitats/Objetos/pista_prueba.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Escenas/Habitats/Objetos/Pieza_completa.tscn" type="PackedScene" id=3]
+
+[node name="Pista_prueba" type="Spatial"]
+
+[node name="Carro_esfera" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.07649, 0 )
+
+[node name="pista_prueba" parent="." instance=ExtResource( 2 )]
+
+[node name="Pieza_completa" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.01622, -6.98535 )
+
+[node name="Pieza_completa2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.01622, -10.3815 )
+
+[node name="Pieza_completa3" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.01622, -17.3207 )
+
+[node name="Pieza_completa4" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.01622, -23.5601 )
+
+[node name="Pieza_completa5" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.01622, 5.0719 )
+
+[node name="Pieza_completa6" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.01622, 8.266 )
+
+[node name="Pieza_completa7" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.01622, 12.3088 )
+
+[node name="Pieza_completa8" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.01622, 18.9481 )
