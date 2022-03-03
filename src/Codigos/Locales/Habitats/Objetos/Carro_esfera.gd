@@ -13,6 +13,8 @@ onready var _particulas_gira_derecha: Particles = $TsuruAlterado/Particulas_gira
 onready var _polvo: Particles = $TsuruAlterado/Polvo
 #onready var _colision_carro = $ColisionCarro
 
+export var player_number:int = 1
+
 # Where to place the car mesh relative to the sphere
 var sphere_offset = Vector3(0, 0, 0)
 var camara_offset = Vector3(0, 0, 0)
@@ -36,11 +38,16 @@ var body_tilt = 50
 var piso = false
 var camara_transform
 
+var input_names = {"brake":'brake', "accelerate":'accelerate', "steer_right":'steer_right',"steer_left":'steer_left'}
 
 
 func _ready():
 	ground_ray.add_exception(ball)
-#	camara_transform = camara.global_transform
+	
+	input_names.brake = input_names.brake + '_' + str(player_number)
+	input_names.accelerate = input_names.accelerate + '_' + str(player_number)
+	input_names.steer_left = input_names.steer_left + '_' + str(player_number)
+	input_names.steer_right = input_names.steer_right + '_' + str(player_number)
 
 func _physics_process(_delta):
 	# Keep the car mesh aligned with the sphere
@@ -58,21 +65,21 @@ func _process(delta):
 		return
 	# Get accelerate/brake input
 	speed_input = 0
-	speed_input += Input.get_action_strength("brake") - Input.get_action_strength("accelerate") 
+	speed_input += Input.get_action_strength(input_names.brake) - Input.get_action_strength(input_names.accelerate) 
 #	speed_input -= Input.get_action_strength("brake")
 	speed_input *= acceleration
 	
 	# Get steering input
 	rotate_input = 0
-	rotate_input += Input.get_action_strength("steer_left")
-	rotate_input -= Input.get_action_strength("steer_right")
+	rotate_input += Input.get_action_strength(input_names.steer_left)
+	rotate_input -= Input.get_action_strength(input_names.steer_right)
 	rotate_input *= deg2rad(steering)	
 	right_wheel.rotation.y = rotate_input*2 - 90
 	left_wheel.rotation.y = rotate_input*2 - 90
 
 	if ball.linear_velocity.length() > turn_stop_limit:
 		var new_basis = car_mesh.global_transform.basis.rotated(car_mesh.global_transform.basis.y, rotate_input)
-		var new_basis_spring = spring.global_transform.basis.rotated(spring.global_transform.basis.y, rotate_input)		
+#		var new_basis_spring = spring.global_transform.basis.rotated(spring.global_transform.basis.y, rotate_input)		
 		car_mesh.global_transform.basis = car_mesh.global_transform.basis.slerp(new_basis, turn_speed * delta)
 		car_mesh.global_transform = car_mesh.global_transform.orthonormalized()
 #		spring.global_transform.basis = spring.global_transform.basis.slerp(new_basis, turn_speed * delta)
@@ -100,19 +107,19 @@ func align_with_y(xform, new_y):
 
 func _input(event):
 	if !_chocando:
-		if Input.is_action_just_pressed("steer_left") && !_girando:
+		if Input.is_action_just_pressed(input_names.steer_left) && !_girando:
 			_particulas_gira.emitting = true
 			_polvo.emitting = true
 			_girando = true
-		if Input.is_action_just_released("steer_left"):
+		if Input.is_action_just_released(input_names.steer_left):
 			_particulas_gira.emitting = false
 			_polvo.emitting = false
 			_girando = false
-		if Input.is_action_just_pressed("steer_right") && !_girando:
+		if Input.is_action_just_pressed(input_names.steer_right) && !_girando:
 			_particulas_gira_derecha.emitting = true
 			_polvo.emitting = true
 			_girando = true
-		if Input.is_action_just_released("steer_right"):
+		if Input.is_action_just_released(input_names.steer_right):
 			_particulas_gira_derecha.emitting = false
 			_polvo.emitting = false
 			_girando = false

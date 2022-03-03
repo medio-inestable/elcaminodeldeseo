@@ -35,7 +35,7 @@ far = 1000.0
 
 [node name="Esfera" type="RigidBody" parent="."]
 collision_layer = 11
-collision_mask = 0
+collision_mask = 8
 mass = 1.02041
 physics_material_override = SubResource( 1 )
 gravity_scale = 7.0
