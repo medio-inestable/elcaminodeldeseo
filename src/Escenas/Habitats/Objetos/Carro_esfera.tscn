@@ -7,7 +7,8 @@
 [ext_resource path="res://Escenas/Habitats/Objetos/Polvo.tscn" type="PackedScene" id=5]
 
 [sub_resource type="PhysicsMaterial" id=1]
-bounce = 0.1
+friction = 1.14
+bounce = 0.14
 
 [sub_resource type="SphereShape" id=2]
 
@@ -17,14 +18,11 @@ extents = Vector3( 0.317035, 0.116766, 0.381554 )
 [node name="Carro_esfera" type="Spatial"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 script = ExtResource( 2 )
-acceleration = 60
-steering = 8.0
-turn_speed = 10
 
 [node name="SpringArm" type="SpringArm" parent="."]
 transform = Transform( 1, 1.42109e-14, -1.42109e-14, 0, 0.794965, 0.615781, 2.13163e-14, -0.639271, 0.765754, 7.45058e-09, 0, 2.23517e-08 )
 collision_mask = 0
-spring_length = 20.0
+spring_length = 40.0
 margin = 1.0
 
 [node name="Camera" type="Camera" parent="SpringArm"]
@@ -36,9 +34,9 @@ far = 1000.0
 [node name="Esfera" type="RigidBody" parent="."]
 collision_layer = 11
 collision_mask = 8
-mass = 1.02041
+mass = 0.682653
 physics_material_override = SubResource( 1 )
-gravity_scale = 7.0
+gravity_scale = 13.34
 angular_damp = 5.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Esfera"]
@@ -89,15 +87,14 @@ transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, -1.658
 shape = SubResource( 3 )
 
 [node name="Polvo" parent="TsuruAlterado" instance=ExtResource( 5 )]
-transform = Transform( 1.39253, 0, -2.27374e-13, 0, 1.39253, 0, 2.27374e-13, 0, 1.39253, -0.241698, -0.628759, 1.6509 )
+transform = Transform( 1.39253, 0, -2.13163e-13, 0, 1.39253, 0, 2.27374e-13, 0, 1.39253, -0.241698, 0.426102, 1.15974 )
+emitting = false
 
 [node name="Particulas_gira" parent="TsuruAlterado" instance=ExtResource( 3 )]
-transform = Transform( 1.39253, 0, -2.27374e-13, 0, 1.39253, 0, 2.27374e-13, 0, 1.39253, 0.866051, -0.628759, 2.2604 )
-visible = false
+transform = Transform( 1, 0, -1.42109e-13, 0, 1, 0, 1.63425e-13, 0, 0.999999, 0.668841, -0.628759, 0.88035 )
 
 [node name="Particulas_gira_derecha" parent="TsuruAlterado" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, -1.03504, 0, 2.72698 )
-visible = false
+transform = Transform( 1, 0, 1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, -1.03504, 0, 0.922293 )
 
 [connection signal="body_entered" from="TsuruAlterado/Area" to="." method="_on_Area_body_entered"]
 

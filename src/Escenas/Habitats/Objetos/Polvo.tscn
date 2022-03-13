@@ -2,32 +2,33 @@
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.891473 )
-colors = PoolColorArray( 0.964222, 0.964222, 0.964222, 1, 0.647816, 0.647816, 0.647816, 0.682353 )
+colors = PoolColorArray( 0.665843, 0.665843, 0.665843, 1, 0.236156, 0.236156, 0.236156, 1 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
 
 [sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 0.230277 ), 0.0, 1.04683, 0, 0, Vector2( 0.671053, 1 ), 0.77848, 0.0, 0, 0 ]
+max_value = 25.04
+_data = [ Vector2( 0, 0.414 ), 0.0, 16.1, 0, 0, Vector2( 1, 8.42255 ), 0.619231, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=4]
 curve = SubResource( 3 )
 
 [sub_resource type="ParticlesMaterial" id=5]
 emission_shape = 2
-emission_box_extents = Vector3( 0.5, 0.1, 0.5 )
-direction = Vector3( 0, 0, 0 )
-spread = 101.51
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = -1.34
-scale = 1.91
-scale_random = 0.65
+emission_box_extents = Vector3( 0.5, 0.2, 0.2 )
+direction = Vector3( 0, 1, 0 )
+spread = 2.13
+gravity = Vector3( 0, 8, 0 )
+initial_velocity = 1.84
+linear_accel = 12.35
+scale = 0.95
+scale_random = 1.0
 scale_curve = SubResource( 4 )
 color_ramp = SubResource( 2 )
 hue_variation = -1.0
 
 [sub_resource type="SpatialMaterial" id=6]
-flags_transparent = true
 vertex_color_use_as_albedo = true
 
 [sub_resource type="SphereMesh" id=7]
@@ -37,9 +38,9 @@ rings = 16
 
 [node name="Polvo" type="Particles"]
 emitting = false
-amount = 64
-lifetime = 1.69
-speed_scale = 2.9
+amount = 128
+speed_scale = 0.71
+visibility_aabb = AABB( -44.8863, -37.6285, -34.8459, 89.7726, 75.2569, 69.6918 )
 local_coords = false
 process_material = SubResource( 5 )
 draw_pass_1 = SubResource( 7 )

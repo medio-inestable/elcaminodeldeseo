@@ -67,8 +67,7 @@ func _process(delta):
 	speed_input = 0
 	speed_input += Input.get_action_strength(input_names.brake) - Input.get_action_strength(input_names.accelerate) 
 #	speed_input -= Input.get_action_strength("brake")
-	speed_input *= acceleration
-	
+	speed_input *= acceleration	
 	# Get steering input
 	rotate_input = 0
 	rotate_input += Input.get_action_strength(input_names.steer_left)
@@ -76,6 +75,8 @@ func _process(delta):
 	rotate_input *= deg2rad(steering)	
 	right_wheel.rotation.y = rotate_input*2 - 90
 	left_wheel.rotation.y = rotate_input*2 - 90
+	
+	camara.fov = clamp(lerp(camara.fov,ball.linear_velocity.length(),delta),46,60)
 
 	if ball.linear_velocity.length() > turn_stop_limit:
 		var new_basis = car_mesh.global_transform.basis.rotated(car_mesh.global_transform.basis.y, rotate_input)
@@ -84,7 +85,7 @@ func _process(delta):
 		car_mesh.global_transform = car_mesh.global_transform.orthonormalized()
 #		spring.global_transform.basis = spring.global_transform.basis.slerp(new_basis, turn_speed * delta)
 #		spring.global_transform = spring.global_transform.orthonormalized()
-		spring.rotation.y = car_mesh.rotation.y
+		spring.rotation.y = lerp_angle(spring.rotation.y,car_mesh.rotation.y,6*delta)
 		# rotate wheels for effect
 
 		# tilt body for effect
@@ -109,20 +110,24 @@ func _input(event):
 	if !_chocando:
 		if Input.is_action_just_pressed(input_names.steer_left) && !_girando:
 			_particulas_gira.emitting = true
-			_polvo.emitting = true
+#			_polvo.emitting = true
 			_girando = true
 		if Input.is_action_just_released(input_names.steer_left):
 			_particulas_gira.emitting = false
-			_polvo.emitting = false
+#			_polvo.emitting = false
 			_girando = false
 		if Input.is_action_just_pressed(input_names.steer_right) && !_girando:
 			_particulas_gira_derecha.emitting = true
-			_polvo.emitting = true
+#			_polvo.emitting = true
 			_girando = true
 		if Input.is_action_just_released(input_names.steer_right):
 			_particulas_gira_derecha.emitting = false
-			_polvo.emitting = false
+#			_polvo.emitting = false
 			_girando = false
+		if Input.is_action_pressed(input_names.accelerate):
+			_polvo.emitting = true
+		if Input.is_action_just_released(input_names.accelerate):
+			_polvo.emitting = false
 
 func _on_Area_body_entered(body):
 	piso = true	
