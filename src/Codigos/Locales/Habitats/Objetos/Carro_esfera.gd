@@ -11,7 +11,8 @@ onready var left_wheel = $TsuruAlterado/Llanta_D_Izq
 onready var _particulas_gira: Particles = $TsuruAlterado/Particulas_gira
 onready var _particulas_gira_derecha: Particles = $TsuruAlterado/Particulas_gira_derecha
 onready var _polvo: Particles = $TsuruAlterado/Polvo
-#onready var _colision_carro = $ColisionCarro
+onready var _velocimetro = $velocimetro
+
 
 export var player_number:int = 1
 
@@ -28,6 +29,7 @@ export var steering = 21.0
 export var turn_speed = 5
 # Below this speed, the car doesn't turn
 var turn_stop_limit = 0.75
+var frame:int = 0
 
 # Variables for input values
 var speed_input = 0
@@ -60,6 +62,7 @@ func _physics_process(_delta):
 func _process(delta):
 	# Can't steer/accelerate when in the air
 #	_colision_carro.transform.origin = car_mesh.transform.origin
+	frame = (frame + 1)%5
 	
 	if not piso:	
 		return
@@ -77,6 +80,9 @@ func _process(delta):
 	left_wheel.rotation.y = rotate_input*2 - 90
 	
 	camara.fov = clamp(lerp(camara.fov,ball.linear_velocity.length(),delta),46,60)
+	
+	if frame == 4:
+		_velocimetro.bbcode_text = str(floor(ball.linear_velocity.length()*2)) + 'km/h'
 
 	if ball.linear_velocity.length() > turn_stop_limit:
 		var new_basis = car_mesh.global_transform.basis.rotated(car_mesh.global_transform.basis.y, rotate_input)
