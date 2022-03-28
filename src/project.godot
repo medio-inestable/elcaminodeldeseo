@@ -14,6 +14,10 @@ config/name="El Camino del Deseo"
 run/main_scene="res://Escenas/Ambientes/CarreteraAtlajomulco.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Senales="*res://Codigos/Globales/Senales.gd"
+
 [input]
 
 steer_left_1={

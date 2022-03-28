@@ -12,6 +12,9 @@ onready var _particulas_gira: Particles = $TsuruAlterado/Particulas_gira
 onready var _particulas_gira_derecha: Particles = $TsuruAlterado/Particulas_gira_derecha
 onready var _polvo: Particles = $TsuruAlterado/Polvo
 onready var _velocimetro = $velocimetro
+onready var _laps = $laps
+onready var _ganaste_carrera = $ganaste_carrera
+onready var _nombre_ganador = $ganaste_carrera/nombre_ganador
 
 
 export var player_number:int = 1
@@ -43,9 +46,13 @@ var camara_transform
 var input_names = {"brake":'brake', "accelerate":'accelerate', "steer_right":'steer_right',"steer_left":'steer_left'}
 
 
-func _ready():
-	ground_ray.add_exception(ball)
-	
+func _ready():	
+	Senales.connect("dio_vuelta",self,"_dio_vuelta")
+	Senales.connect("spawnea_carro", self, "_spawnea_carro")
+	Senales.connect("termina_carrera", self, "_termina_carrera")
+	$TsuruAlterado/Area.name = 'Area_carro_' + str(player_number)
+	_nombre_ganador.bbcode_text = '[center][wave amp=50 freq=2][rainbow freq=0.2 sat=10 val=20]Jugadorx ' + str(player_number) + '[/rainbow][/wave][/center]'
+	ground_ray.add_exception(ball)	
 	input_names.brake = input_names.brake + '_' + str(player_number)
 	input_names.accelerate = input_names.accelerate + '_' + str(player_number)
 	input_names.steer_left = input_names.steer_left + '_' + str(player_number)
@@ -136,4 +143,18 @@ func _input(event):
 			_polvo.emitting = false
 
 func _on_Area_body_entered(body):
-	piso = true	
+	piso = true
+
+func _dio_vuelta(carro, vuelta):
+	if carro == 'Area_carro_'+str(player_number):
+		_laps.bbcode_text = str(vuelta)
+		
+	
+func _spawnea_carro(posicion, rotacion, numero_carro):
+	if numero_carro == player_number:
+		translation = posicion
+		rotation.y = rotacion.y
+
+func _termina_carrera(carro):
+	if carro == 'Area_carro_'+str(player_number):
+		_ganaste_carrera.visible = true

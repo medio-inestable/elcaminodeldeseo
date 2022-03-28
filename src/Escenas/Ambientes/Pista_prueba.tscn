@@ -1,10 +1,78 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Escenas/Interfaz/Contenedor_camaras.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Escenas/Habitats/Pistas/pista-completa_01.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Escenas/Habitats/Objetos/Checkpoints_contenedor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Escenas/Habitats/Objetos/Checkpoint.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Codigos/Locales/Habitats/Objetos/Checkpoints_contenedor.gd" type="Script" id=5]
+[ext_resource path="res://Escenas/Habitats/Objetos/Spawn_1.tscn" type="PackedScene" id=6]
 
 [node name="Pista_prueba" type="Spatial"]
 
 [node name="Contenedor_camaras" parent="." instance=ExtResource( 1 )]
+numero_jugadores = 2
 
 [node name="pista-completa_01" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.62854, -10.367, -5.44881 )
+
+[node name="Checkpoints_contenedor" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.62854, -10.367, -5.44881 )
+script = ExtResource( 5 )
+
+[node name="Checkpoint_0" parent="Checkpoints_contenedor" instance=ExtResource( 4 )]
+transform = Transform( 0.924306, -0.0584662, 0.377146, 0, 0.988196, 0.153193, -0.381651, -0.141597, 0.913396, -0.419673, 3.16591, 11.4745 )
+
+[node name="Checkpoint_1" parent="Checkpoints_contenedor" instance=ExtResource( 4 )]
+transform = Transform( 0.954004, -0.0584662, 0.294037, 0.0135301, 0.988196, 0.152594, -0.299488, -0.141597, 0.943534, 28.6927, 4.78005, -0.81683 )
+numero = 1
+
+[node name="Checkpoint_2" parent="Checkpoints_contenedor" instance=ExtResource( 4 )]
+transform = Transform( 0.993994, -0.0584662, -0.0925072, 0.0707698, 0.988196, 0.135866, 0.0834716, -0.141597, 0.986399, 68.9154, 5.2394, -1.11067 )
+numero = 2
+
+[node name="Checkpoint_3" parent="Checkpoints_contenedor" instance=ExtResource( 4 )]
+transform = Transform( 0.211662, -0.0584662, -0.975593, 0.150886, 0.988196, -0.0264858, 0.965625, -0.141597, 0.217985, 104.076, 3.92552, 27.5337 )
+numero = 3
+
+[node name="Checkpoint_4" parent="Checkpoints_contenedor" instance=ExtResource( 4 )]
+transform = Transform( -0.777994, 0.0137868, -0.628121, 0.0437757, 0.998519, -0.032304, 0.626745, -0.0526287, -0.777445, 91.3469, 8.3309, 68.3112 )
+numero = 4
+
+[node name="Checkpoint_5" parent="Checkpoints_contenedor" instance=ExtResource( 4 )]
+transform = Transform( -0.999711, 0.0137868, 0.0197013, 0.0127279, 0.998519, -0.0528948, -0.0204014, -0.0526287, -0.998406, 58.9438, 6.72922, 78.8565 )
+numero = 5
+
+[node name="Checkpoint_6" parent="Checkpoints_contenedor" instance=ExtResource( 4 )]
+transform = Transform( 0.0838107, -0.00210227, 0.996479, 0.136225, 0.990633, -0.00936749, -0.987126, 0.13653, 0.0833121, 38.7586, 3.8543, 46.7726 )
+numero = 6
+
+[node name="Checkpoint_7" parent="Checkpoints_contenedor" instance=ExtResource( 4 )]
+transform = Transform( 0.0350578, -0.346382, 0.937438, 0.118674, 0.932821, 0.340237, -0.992314, 0.0993214, 0.0738091, 51.48, 18.2087, 8.57292 )
+numero = 7
+
+[node name="Checkpoint_8" parent="Checkpoints_contenedor" instance=ExtResource( 4 )]
+transform = Transform( -0.773907, -0.254683, 0.579831, -0.224314, 0.966453, 0.125108, -0.592243, -0.0332423, -0.805073, 34.9119, 13.4379, -22.0113 )
+numero = 8
+
+[node name="Checkpoint_9" parent="Checkpoints_contenedor" instance=ExtResource( 4 )]
+transform = Transform( -0.743928, -0.0139598, 0.668114, 0.0857596, 0.98952, 0.116167, -0.662734, 0.143717, -0.734935, -0.265062, 3.0268, -54.1005 )
+numero = 9
+
+[node name="Checkpoint_10" parent="Checkpoints_contenedor" instance=ExtResource( 4 )]
+transform = Transform( -0.759485, 0.0392816, -0.649337, -0.189537, 0.941505, 0.278645, 0.622299, 0.3347, -0.707615, -38.3007, 8.1246, -66.784 )
+numero = 10
+
+[node name="Checkpoint_11" parent="Checkpoints_contenedor" instance=ExtResource( 4 )]
+transform = Transform( -0.175505, 0.111456, -0.978149, 0.0474903, 0.993372, 0.10467, 0.983332, -0.0280825, -0.179635, -51.6262, 0.333512, -25.0452 )
+numero = 11
+
+[node name="Checkpoint_12" parent="Checkpoints_contenedor" instance=ExtResource( 4 )]
+transform = Transform( 0.686565, 0.216881, -0.693967, 0.0556206, 0.936009, 0.347552, 0.724937, -0.277216, 0.630569, -53.4617, 6.5904, 15.9426 )
+numero = 12
+
+[node name="Spawn_1" parent="." instance=ExtResource( 6 )]
+transform = Transform( 0.434269, -0.0605147, -0.898748, 0.138015, 0.990429, 3.26611e-09, 0.890147, -0.124041, 0.438465, -5.58738, -5.3615, 8.65893 )
+
+[node name="Spawn_2" parent="." instance=ExtResource( 6 )]
+transform = Transform( 0.435154, -0.00566801, -0.900338, 0.214513, 0.971836, 0.0975608, 0.874428, -0.235588, 0.424114, -6.06158, -3.43585, 16.3837 )
+numero_carro = 2

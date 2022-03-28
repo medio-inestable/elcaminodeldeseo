@@ -34,7 +34,7 @@ handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="Carro_esfera" parent="1Jugador/ViewportContainer/Viewport" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4587, 7.06187, 16.2418 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 acceleration = 75
 steering = 12.0
 turn_speed = 16
@@ -64,7 +64,7 @@ handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="Carro_esfera" parent="2Jugadores/ViewportContainer/Viewport" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4587, 7.06187, 16.2418 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 acceleration = 75
 steering = 12.0
 turn_speed = 16
@@ -86,7 +86,7 @@ handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="Carro_esfera2" parent="2Jugadores/ViewportContainer2/Viewport2" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -11.4587, 4.55992, 12.148 )
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 4, 0, 0 )
 player_number = 2
 acceleration = 75
 steering = 12.0
