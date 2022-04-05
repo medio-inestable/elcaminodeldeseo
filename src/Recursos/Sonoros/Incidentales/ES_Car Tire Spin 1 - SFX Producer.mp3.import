@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ES_Car Tire Spin 1 - SFX Producer.mp3-a80845c8da1604da647821d92d03567a.mp3str"
+
+[deps]
+
+source_file="res://Recursos/Sonoros/Incidentales/ES_Car Tire Spin 1 - SFX Producer.mp3"
+dest_files=[ "res://.import/ES_Car Tire Spin 1 - SFX Producer.mp3-a80845c8da1604da647821d92d03567a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

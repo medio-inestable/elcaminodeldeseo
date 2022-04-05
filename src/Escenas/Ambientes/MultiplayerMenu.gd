@@ -1,7 +1,7 @@
 extends MarginContainer
 
 const SCENE_NAMES = preload("res://Escenas/Ambientes/ScenePaths.gd");
-
+var multiplayer_gd = preload('res://Codigos/Locales/Interfaz/Contenedor_camaras.gd')
 onready var levelChanger = get_child(0);
 
 var current_selection = 0
@@ -43,10 +43,16 @@ func handle_selection(_current_selection):
 	if _current_selection == 0:
 		#get_parent().add_child(first_scene.instance())
 		levelChanger.requestLevelChange(SCENE_NAMES.SCENE_PATHS.SCENE_MULTIPLAYER1);
+		Senales.emit_signal("elige_multiplayer", 1)
+		get_tree().change_scene("res://Escenas/Ambientes/Pista_prueba.tscn")
+		queue_free()
 		#get_tree().change_scene("res://escenas/Intro.tscn")
-		#queue_free()
+		
 	elif _current_selection == 1:
-		levelChanger.requestLevelChange(SCENE_NAMES.SCENE_PATHS.SCENE_MULTIPLAYER2);	
+		levelChanger.requestLevelChange(SCENE_NAMES.SCENE_PATHS.SCENE_MULTIPLAYER2);
+		Senales.emit_signal("elige_multiplayer", 2)	
+		get_tree().change_scene("res://Escenas/Ambientes/Pista_prueba.tscn")
+		queue_free()
 		#get_tree().change_scene("res://escenas/AcercaDe.tscn")
 		#queue_free()
 	elif _current_selection == 2:

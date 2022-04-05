@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Codigos/Locales/Habitats/Objetos/Spawn.gd" type="Script" id=1]
 
@@ -17,10 +17,24 @@ rings = 8
 [sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 0.270588, 1, 0.0235294, 1 )
 
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 1, 0.287378, 1.20564 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 0.346665, 0.580695, 1.29981 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 0.350639, 0.53816, 1.28974 )
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 1.33443, 0.542118, 0.359409 )
+
+[sub_resource type="BoxShape" id=9]
+extents = Vector3( 1.37413, 0.464443, 0.348472 )
+
 [node name="Spawn_1" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, 0, 0 )
 script = ExtResource( 1 )
-numero_carro = 1
 
 [node name="CSGMesh" type="CSGMesh" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -5.43774e-08, -1.24401 )
@@ -31,3 +45,45 @@ material = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.300346, 0 )
 mesh = SubResource( 3 )
 material = SubResource( 4 )
+
+[node name="Colliders" type="Spatial" parent="."]
+
+[node name="StaticBody" type="StaticBody" parent="Colliders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.41808, 0 )
+collision_layer = 0
+collision_mask = 1025
+
+[node name="CollisionShape" type="CollisionShape" parent="Colliders/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="StaticBody2" type="StaticBody" parent="Colliders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.88165, -0.535271, 0 )
+collision_layer = 0
+collision_mask = 9
+
+[node name="CollisionShape2" type="CollisionShape" parent="Colliders/StaticBody2"]
+shape = SubResource( 6 )
+
+[node name="StaticBody3" type="StaticBody" parent="Colliders"]
+transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 1.80273, -0.604826, 0 )
+collision_layer = 0
+collision_mask = 9
+
+[node name="CollisionShape3" type="CollisionShape" parent="Colliders/StaticBody3"]
+shape = SubResource( 7 )
+
+[node name="StaticBody4" type="StaticBody" parent="Colliders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.612284, -1.97223 )
+collision_layer = 0
+collision_mask = 9
+
+[node name="CollisionShape" type="CollisionShape" parent="Colliders/StaticBody4"]
+shape = SubResource( 8 )
+
+[node name="StaticBody5" type="StaticBody" parent="Colliders"]
+transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, -0.568392, 1.85625 )
+collision_layer = 0
+collision_mask = 9
+
+[node name="CollisionShape" type="CollisionShape" parent="Colliders/StaticBody5"]
+shape = SubResource( 9 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/motor.mp3-b4289590842e0f9d749920f1bd65064d.mp3str"
+
+[deps]
+
+source_file="res://Recursos/Sonoros/Incidentales/motor.mp3"
+dest_files=[ "res://.import/motor.mp3-b4289590842e0f9d749920f1bd65064d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=1.2

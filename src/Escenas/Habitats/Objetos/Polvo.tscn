@@ -27,6 +27,7 @@ scale_curve = SubResource( 4 )
 color_ramp = SubResource( 2 )
 
 [sub_resource type="SpatialMaterial" id=6]
+flags_disable_ambient_light = true
 vertex_color_use_as_albedo = true
 albedo_color = Color( 1, 0.760784, 0.407843, 1 )
 

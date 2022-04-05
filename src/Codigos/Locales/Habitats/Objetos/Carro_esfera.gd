@@ -15,6 +15,8 @@ onready var _velocimetro = $velocimetro
 onready var _laps = $laps
 onready var _ganaste_carrera = $ganaste_carrera
 onready var _nombre_ganador = $ganaste_carrera/nombre_ganador
+onready var _rechinido = $TsuruAlterado/rechinido
+onready var _acelera_s = $TsuruAlterado/acelera
 
 
 export var player_number:int = 1
@@ -43,6 +45,8 @@ var body_tilt = 50
 var piso = false
 var camara_transform
 
+var inicia_juego = false
+
 var input_names = {"brake":'brake', "accelerate":'accelerate', "steer_right":'steer_right',"steer_left":'steer_left'}
 
 
@@ -50,8 +54,9 @@ func _ready():
 	Senales.connect("dio_vuelta",self,"_dio_vuelta")
 	Senales.connect("spawnea_carro", self, "_spawnea_carro")
 	Senales.connect("termina_carrera", self, "_termina_carrera")
+	Senales.connect("termina_timer", self, "_inicia_juego")
 	$TsuruAlterado/Area.name = 'Area_carro_' + str(player_number)
-	_nombre_ganador.bbcode_text = '[center][wave amp=50 freq=2][rainbow freq=0.2 sat=10 val=20]Jugadorx ' + str(player_number) + '[/rainbow][/wave][/center]'
+	_nombre_ganador.bbcode_text = '[center][wave amp=100 freq=1.5][rainbow freq=1 sat=2 val=10]Jugadorx ' + str(player_number) + '[/rainbow][/wave][/center]'
 	ground_ray.add_exception(ball)	
 	input_names.brake = input_names.brake + '_' + str(player_number)
 	input_names.accelerate = input_names.accelerate + '_' + str(player_number)
@@ -59,9 +64,12 @@ func _ready():
 	input_names.steer_right = input_names.steer_right + '_' + str(player_number)
 
 func _physics_process(_delta):
-	# Keep the car mesh aligned with the sphere
 	car_mesh.transform.origin = ball.transform.origin + sphere_offset
 	spring.transform.origin = ball.transform.origin + camara_offset
+	if not inicia_juego:
+		return
+	# Keep the car mesh aligned with the sphere
+	
 	# Accelerate based on car's forward direction
 	ball.add_central_force(car_mesh.global_transform.basis.z * speed_input)
 	
@@ -70,7 +78,8 @@ func _process(delta):
 	# Can't steer/accelerate when in the air
 #	_colision_carro.transform.origin = car_mesh.transform.origin
 	frame = (frame + 1)%5
-	
+	if not inicia_juego:
+		return
 	if not piso:	
 		return
 	# Get accelerate/brake input
@@ -90,7 +99,9 @@ func _process(delta):
 	
 	if frame == 4:
 		_velocimetro.bbcode_text = str(floor(ball.linear_velocity.length()*2)) + 'km/h'
-
+		_acelera_s.volume_db = clamp(lerp(_acelera_s.volume_db,((ball.linear_velocity.length()*0.23)-25),delta),-16,-9)
+		print(_acelera_s.volume_db)
+	
 	if ball.linear_velocity.length() > turn_stop_limit:
 		var new_basis = car_mesh.global_transform.basis.rotated(car_mesh.global_transform.basis.y, rotate_input)
 #		var new_basis_spring = spring.global_transform.basis.rotated(spring.global_transform.basis.y, rotate_input)		
@@ -123,24 +134,33 @@ func _input(event):
 	if !_chocando:
 		if Input.is_action_just_pressed(input_names.steer_left) && !_girando:
 			_particulas_gira.emitting = true
+			_rechinido.play(0.4)
+			_rechinido.stream_paused = false
 #			_polvo.emitting = true
 			_girando = true
 		if Input.is_action_just_released(input_names.steer_left):
 			_particulas_gira.emitting = false
+			_rechinido.stream_paused = true
 #			_polvo.emitting = false
 			_girando = false
 		if Input.is_action_just_pressed(input_names.steer_right) && !_girando:
 			_particulas_gira_derecha.emitting = true
+			_rechinido.play(0.4)
+			_rechinido.stream_paused = false
 #			_polvo.emitting = true
 			_girando = true
 		if Input.is_action_just_released(input_names.steer_right):
 			_particulas_gira_derecha.emitting = false
+			_rechinido.stream_paused = true
 #			_polvo.emitting = false
 			_girando = false
 		if Input.is_action_pressed(input_names.accelerate):
 			_polvo.emitting = true
+#			_acelera_s.play()
+			_acelera_s.stream_paused = false
 		if Input.is_action_just_released(input_names.accelerate):
 			_polvo.emitting = false
+			_acelera_s.stream_paused = true
 
 func _on_Area_body_entered(body):
 	piso = true
@@ -158,3 +178,9 @@ func _spawnea_carro(posicion, rotacion, numero_carro):
 func _termina_carrera(carro):
 	if carro == 'Area_carro_'+str(player_number):
 		_ganaste_carrera.visible = true
+		_laps.visible = false
+		_velocimetro.visible = false
+		acceleration = 40
+
+func _inicia_juego():
+	inicia_juego = true

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/rechinido.mp3-287b3ad4cd7ee9f56303478414607a76.mp3str"
+
+[deps]
+
+source_file="res://Recursos/Sonoros/Incidentales/rechinido.mp3"
+dest_files=[ "res://.import/rechinido.mp3-287b3ad4cd7ee9f56303478414607a76.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=2.45

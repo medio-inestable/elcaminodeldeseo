@@ -7,6 +7,7 @@ var vuelta_1 = 0
 var checkpoint_actual_2 = -1
 var checkpoint_siguiente_2
 var vuelta_2 = 0
+export var total_vueltas:int = 3
 
 func _ready():
 	Senales.connect("entro_checkpoint", self, "_paso_checkpoint")
@@ -29,7 +30,7 @@ func _paso_checkpoint(numero, carro):
 					if checkpoint_actual_1 == 0:
 						vuelta_1 = vuelta_1 + 1
 						Senales.emit_signal("dio_vuelta", carro, vuelta_1)
-						if vuelta_1 == 3:
+						if vuelta_1 == total_vueltas:
 							Senales.emit_signal("termina_carrera", carro)
 					
 		'Area_carro_2':
@@ -42,6 +43,6 @@ func _paso_checkpoint(numero, carro):
 					if checkpoint_actual_2 == 0:
 						vuelta_2 = vuelta_2 + 1
 						Senales.emit_signal("dio_vuelta", carro, vuelta_2)
-						if vuelta_2 == 3:
+						if vuelta_2 == total_vueltas:
 							Senales.emit_signal("termina_carrera", carro)
 					
