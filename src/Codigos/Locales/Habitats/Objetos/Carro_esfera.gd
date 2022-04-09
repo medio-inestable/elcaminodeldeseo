@@ -99,7 +99,7 @@ func _process(delta):
 	
 	if frame == 4:
 		_velocimetro.bbcode_text = str(floor(ball.linear_velocity.length()*2)) + 'km/h'
-		_acelera_s.volume_db = clamp(lerp(_acelera_s.volume_db,((ball.linear_velocity.length()*0.23)-25),delta),-16,-9)
+		_acelera_s.volume_db = clamp(lerp(_acelera_s.volume_db,((ball.linear_velocity.length()*0.13)-35),delta),-28,-18)
 		print(_acelera_s.volume_db)
 	
 	if ball.linear_velocity.length() > turn_stop_limit:
