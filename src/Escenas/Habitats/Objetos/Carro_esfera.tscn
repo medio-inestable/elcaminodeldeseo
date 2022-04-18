@@ -15,18 +15,18 @@ bounce = 0.14
 
 [sub_resource type="SphereShape" id=2]
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0, 1, 0.462745, 1 )
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=4]
 extents = Vector3( 0.317035, 0.116766, 0.381554 )
 
-[sub_resource type="DynamicFontData" id=4]
+[sub_resource type="DynamicFontData" id=5]
 font_path = "res://Recursos/Textos/Tipografia/BowlbyOneSC-Regular.ttf"
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 49
-font_data = SubResource( 4 )
+font_data = SubResource( 5 )
 
 [node name="Carro_esfera" type="Spatial"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
@@ -63,7 +63,7 @@ transform = Transform( -3.25283e-08, -0.909122, 3.24048e-08, 0, -3.9739e-08, -0.
 [node name="TsuruFinal" parent="TsuruAlterado" index="1"]
 transform = Transform( -1.68286e-08, 0, -0.909122, 0, 0.909122, 0, 0.384992, 0, -3.9739e-08, -0.086799, 0.004923, 0.0861633 )
 use_in_baked_light = true
-material/0 = SubResource( 6 )
+material/0 = SubResource( 3 )
 
 [node name="TsuruVentanas" parent="TsuruAlterado" index="2"]
 transform = Transform( -1.68286e-08, 0, -0.909122, 0, 0.909122, 0, 0.384992, 0, -3.9739e-08, -0.086799, 0.004923, 0.0861633 )
@@ -99,7 +99,7 @@ collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="TsuruAlterado/Area"]
 transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 0, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Polvo" parent="TsuruAlterado" instance=ExtResource( 5 )]
 transform = Transform( 1.39253, 0, -2.13163e-13, 0, 1.39253, 0, 2.27374e-13, 0, 1.39253, -0.241698, 0.426102, 1.15974 )
@@ -129,7 +129,7 @@ margin_left = -254.0
 margin_top = -71.0
 margin_right = 43.0
 margin_bottom = -4.0
-custom_fonts/normal_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 6 )
 bbcode_enabled = true
 scroll_active = false
 __meta__ = {
@@ -145,7 +145,7 @@ margin_left = -254.0
 margin_top = -136.0
 margin_right = 43.0
 margin_bottom = -69.0
-custom_fonts/normal_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 6 )
 bbcode_enabled = true
 scroll_active = false
 __meta__ = {
@@ -187,7 +187,7 @@ margin_left = -200.0
 margin_top = 129.626
 margin_right = 200.0
 margin_bottom = 329.626
-custom_fonts/normal_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 6 )
 bbcode_enabled = true
 scroll_active = false
 __meta__ = {

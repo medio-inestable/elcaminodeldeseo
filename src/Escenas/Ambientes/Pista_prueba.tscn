@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Escenas/Interfaz/Contenedor_camaras.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Escenas/Habitats/Pistas/pista-completa_01.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Escenas/Habitats/Pistas/pista_grande.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Escenas/Habitats/Objetos/Checkpoints_contenedor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Escenas/Habitats/Objetos/Checkpoint.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Codigos/Locales/Habitats/Objetos/Checkpoints_contenedor.gd" type="Script" id=5]
@@ -34,10 +34,13 @@ font_data = ExtResource( 9 )
 environment = ExtResource( 8 )
 
 [node name="Contenedor_camaras" parent="." instance=ExtResource( 1 )]
+numero_jugadores = 1
 
-[node name="pista-completa_01" parent="." instance=ExtResource( 2 )]
+[node name="pista_grande" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 142.855, 17.1511, 0 )
 
 [node name="pista_prueba_objetos" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -32.1816, 0 )
 
 [node name="Checkpoints_contenedor" parent="." instance=ExtResource( 3 )]
 script = ExtResource( 5 )
@@ -95,11 +98,11 @@ transform = Transform( 0.686565, 0.216881, -0.693967, 0.0556206, 0.936009, 0.347
 numero = 12
 
 [node name="Spawn_1" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.440422, -0.0253637, -0.897432, 0.0446757, 0.99898, -0.00630879, 0.896678, -0.0373148, 0.441107, -9.38042, 5.61295, 13.8087 )
+transform = Transform( -0.0418407, 0, -0.999123, 0, 0.999999, 0, 0.999123, 0, -0.0418407, 82.6076, 59.4417, -49.623 )
 numero_carro = 1
 
 [node name="Spawn_2" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.435154, -0.00566801, -0.900338, 0.214513, 0.971836, 0.0975608, 0.874428, -0.235588, 0.424114, -5.44807, 5.55969, 19.0048 )
+transform = Transform( 0.101907, 0, -0.994794, 0, 0.999999, 0, 0.994794, 0, 0.101907, 72.9107, 59.7954, -45.1735 )
 numero_carro = 2
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
@@ -129,8 +132,8 @@ margin_left = -181.0
 margin_top = -127.0
 margin_right = 181.0
 margin_bottom = 127.0
-custom_colors/default_color = Color( 1, 0, 1, 1 )
 custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 1, 0, 1, 1 )
 bbcode_enabled = true
 bbcode_text = "[center]3[/center]"
 text = "3"
