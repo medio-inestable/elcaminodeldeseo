@@ -40,7 +40,7 @@ var frame:int = 0
 var speed_input = 0
 var rotate_input = 0
 
-var body_tilt = 50
+var body_tilt = 20
 
 var piso = false
 var camara_transform
@@ -100,7 +100,7 @@ func _process(delta):
 	if frame == 4:
 		_velocimetro.bbcode_text = str(floor(ball.linear_velocity.length()*2)) + 'km/h'
 		_acelera_s.volume_db = clamp(lerp(_acelera_s.volume_db,((ball.linear_velocity.length()*0.13)-35),delta),-28,-18)
-		print(_acelera_s.volume_db)
+
 	
 	if ball.linear_velocity.length() > turn_stop_limit:
 		var new_basis = car_mesh.global_transform.basis.rotated(car_mesh.global_transform.basis.y, rotate_input)
@@ -114,7 +114,9 @@ func _process(delta):
 
 		# tilt body for effect
 		var t = -rotate_input*6 * ball.linear_velocity.length() / body_tilt
-		car_mesh.rotation.z = lerp(car_mesh.rotation.z, t, 10 * delta)
+		car_mesh.rotation.z = clamp(lerp(car_mesh.rotation.z, t, 3 * delta),-0.8,0.8)
+		print(car_mesh.rotation.z)
+		
 #		spring.rotation.z = lerp(spring.rotation.z, -t, 10 * delta)
 
 #	_colision_carro.transform.basis = car_mesh.global_transform.basis
