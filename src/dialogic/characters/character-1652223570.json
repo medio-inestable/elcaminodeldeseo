@@ -1,0 +1,21 @@
+{
+	"color": "#fff2ca14",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1652223570.json",
+	"mirror_portraits": false,
+	"name": "gaby gatierrez",
+	"nickname": "gaby",
+	"nickname_bool": true,
+	"offset_x": 0,
+	"offset_y": -256,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://Recursos/Graficos/Sprites/prueba-rpg/personajes/gaby-frente.png"
+		}
+	],
+	"scale": 50,
+	"theme": "theme-1652225095.cfg"
+}

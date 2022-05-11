@@ -1,0 +1,21 @@
+{
+	"color": "#ffd837ea",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1652224414.json",
+	"mirror_portraits": true,
+	"name": "ele",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": -256,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://Recursos/Graficos/Sprites/prueba-rpg/personajes/ele.png"
+		}
+	],
+	"scale": 50,
+	"theme": "theme-1652225095.cfg"
+}
