@@ -17,6 +17,9 @@ onready var _ganaste_carrera = $ganaste_carrera
 onready var _nombre_ganador = $ganaste_carrera/nombre_ganador
 onready var _rechinido = $TsuruAlterado/rechinido
 onready var _acelera_s = $TsuruAlterado/acelera
+onready var _sprite_frontal = $TsuruAlterado/Sprites/Frontal
+onready var _sprite_derecha = $TsuruAlterado/Sprites/Derecha
+onready var _sprite_izquierda = $TsuruAlterado/Sprites/Izquierda
 
 
 export var player_number:int = 1
@@ -95,7 +98,7 @@ func _process(delta):
 	right_wheel.rotation.y = rotate_input*2 - 90
 	left_wheel.rotation.y = rotate_input*2 - 90
 	
-	camara.fov = clamp(lerp(camara.fov,ball.linear_velocity.length(),delta),46,60)
+	camara.fov = clamp(lerp(camara.fov,ball.linear_velocity.length()*0.6,delta),46,60)
 	
 	if frame == 4:
 		_velocimetro.bbcode_text = str(floor(ball.linear_velocity.length()*2)) + 'km/h'
@@ -138,22 +141,30 @@ func _input(event):
 			_particulas_gira.emitting = true
 			_rechinido.play(0.4)
 			_rechinido.stream_paused = false
+			_sprite_frontal.visible = false
+			_sprite_izquierda.visible = true
 #			_polvo.emitting = true
 			_girando = true
 		if Input.is_action_just_released(input_names.steer_left):
 			_particulas_gira.emitting = false
 			_rechinido.stream_paused = true
+			_sprite_izquierda.visible = false
+			_sprite_frontal.visible = true
 #			_polvo.emitting = false
 			_girando = false
 		if Input.is_action_just_pressed(input_names.steer_right) && !_girando:
 			_particulas_gira_derecha.emitting = true
 			_rechinido.play(0.4)
 			_rechinido.stream_paused = false
+			_sprite_frontal.visible = false
+			_sprite_derecha.visible = true
 #			_polvo.emitting = true
 			_girando = true
 		if Input.is_action_just_released(input_names.steer_right):
 			_particulas_gira_derecha.emitting = false
 			_rechinido.stream_paused = true
+			_sprite_derecha.visible = false
+			_sprite_frontal.visible = true
 #			_polvo.emitting = false
 			_girando = false
 		if Input.is_action_pressed(input_names.accelerate):
