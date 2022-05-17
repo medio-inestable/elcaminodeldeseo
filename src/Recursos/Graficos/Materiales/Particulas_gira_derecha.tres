@@ -2,7 +2,7 @@
 
 [sub_resource type="Curve" id=1]
 min_value = -1.0
-_data = [ Vector2( 0, 0.281583 ), 0.0, -0.230322, 0, 0, Vector2( 0.960526, 0.536128 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, -0.563636 ), 0.0, -0.230322, 0, 0, Vector2( 0.95614, -1 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=2]
 curve = SubResource( 1 )
@@ -18,7 +18,6 @@ direction = Vector3( -1, 1, 1 )
 spread = 30.0
 gravity = Vector3( 0, -45, 0 )
 initial_velocity = 17.28
-scale = 0.7
 scale_curve = SubResource( 4 )
 color = Color( 0, 0.415686, 1, 1 )
 hue_variation_curve = SubResource( 2 )

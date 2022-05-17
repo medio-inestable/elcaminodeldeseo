@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://Recursos/Graficos/Modelos/TsuruAlterado.gltf" type="PackedScene" id=1]
 [ext_resource path="res://Codigos/Locales/Habitats/Objetos/Carro_esfera.gd" type="Script" id=2]
@@ -11,6 +11,20 @@
 [ext_resource path="res://Recursos/Graficos/Materiales/Personajes-auto/Luigi-front.tres" type="Material" id=9]
 [ext_resource path="res://Recursos/Graficos/Materiales/Personajes-auto/Luigi-d.tres" type="Material" id=10]
 [ext_resource path="res://Recursos/Graficos/Materiales/Personajes-auto/Luigi-i.tres" type="Material" id=11]
+[ext_resource path="res://Recursos/Graficos/Interfaz/ui-auto/expresiones/Expresiones-side.png" type="Texture" id=12]
+[ext_resource path="res://Recursos/Graficos/Interfaz/ui-auto/expresiones/Expresiones-marco.png" type="Texture" id=13]
+[ext_resource path="res://Recursos/Graficos/Interfaz/ui-auto/expresiones/luigi/Expresiones-luigi-enojado.png" type="Texture" id=14]
+[ext_resource path="res://Recursos/Graficos/Interfaz/ui-auto/expresiones/Expresiones-icono-ataque.png" type="Texture" id=15]
+[ext_resource path="res://Recursos/Graficos/Interfaz/ui-auto/expresiones/Expresiones-icono-cambio.png" type="Texture" id=16]
+[ext_resource path="res://Recursos/Graficos/Interfaz/ui-auto/expresiones/Expresiones-icono-rota.png" type="Texture" id=17]
+[ext_resource path="res://Recursos/Graficos/Interfaz/ui-auto/expresiones/Expresiones-live.png" type="Texture" id=18]
+[ext_resource path="res://Recursos/Graficos/Interfaz/ui-auto/expresiones/Expresiones-mana.png" type="Texture" id=19]
+[ext_resource path="res://Recursos/Graficos/Interfaz/ui-auto/expresiones/Expresiones-mana-barra.png" type="Texture" id=20]
+[ext_resource path="res://Recursos/Graficos/Interfaz/ui-auto/expresiones/luigi/Expresiones-luigi-raro.png" type="Texture" id=21]
+[ext_resource path="res://Recursos/Graficos/Interfaz/ui-auto/expresiones/luigi/Expresiones-luigi-feliz.png" type="Texture" id=22]
+[ext_resource path="res://Recursos/Graficos/Interfaz/ui-auto/expresiones/luigi/Expresiones-luigi-sorprendido.png" type="Texture" id=23]
+[ext_resource path="res://Recursos/Graficos/Interfaz/ui-auto/expresiones/Muybridge_race_horse_gallop.png" type="Texture" id=24]
+[ext_resource path="res://motion_blur/motion_blur.tscn" type="PackedScene" id=25]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 1.14
@@ -35,6 +49,94 @@ font_path = "res://Recursos/Textos/Tipografia/BowlbyOneSC-Regular.ttf"
 size = 49
 font_data = SubResource( 7 )
 
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 0, 0, 67, 49 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 67, 0, 67, 49 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 134, 0, 67, 49 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 201, 0, 67, 49 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 0, 49, 67, 49 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 67, 49, 67, 49 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 134, 49, 67, 49 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 201, 49, 67, 49 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 0, 98, 67, 49 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 67, 98, 67, 49 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 134, 98, 67, 49 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 201, 98, 67, 49 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 0, 147, 67, 49 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 67, 147, 67, 49 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 134, 147, 67, 49 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 24 )
+region = Rect2( 201, 147, 67, 49 )
+
+[sub_resource type="SpriteFrames" id=26]
+animations = [ {
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"loop": true,
+"name": "default",
+"speed": 24.0
+} ]
+
 [node name="Carro_esfera" type="Spatial"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 script = ExtResource( 2 )
@@ -46,10 +148,13 @@ spring_length = 40.0
 margin = 1.0
 
 [node name="Camera" type="Camera" parent="SpringArm"]
-transform = Transform( 1, 7.10543e-15, -1.42109e-14, 3.55271e-15, 0.974046, -0.110386, -7.10543e-15, 0.114596, 1.0112, 0, 0, 0 )
+transform = Transform( 1, 0, 7.10543e-15, 3.55271e-15, 0.974046, -0.110385, 0, 0.114596, 1.0112, 0, 0, 0 )
 current = true
 fov = 47.8
 far = 1000.0
+
+[node name="motion_blur" parent="SpringArm/Camera" instance=ExtResource( 25 )]
+visible = false
 
 [node name="Esfera" type="RigidBody" parent="."]
 collision_layer = 11
@@ -65,33 +170,33 @@ shape = SubResource( 2 )
 [node name="TsuruAlterado" parent="." instance=ExtResource( 1 )]
 
 [node name="Llantas_Traseras" parent="TsuruAlterado" index="0"]
-transform = Transform( -8.27857e-08, -2.01078, 7.68665e-08, 0, -8.78939e-08, -1.7585, 1.89392, -8.78939e-08, 3.35994e-15, 0, -1.02296, 1.34036 )
+transform = Transform( -1.18417e-07, -2.87622, 1.0995e-07, 0, -1.25724e-07, -2.51536, 2.70906, -1.25724e-07, 4.80606e-15, -0.00154508, -1.48519, 1.88086 )
 
 [node name="TsuruFinal" parent="TsuruAlterado" index="1"]
-transform = Transform( -4.28295e-08, 0, -2.01078, 0, 2.1565, 0, 0.979824, 0, -8.78939e-08, 0, -0.0658267, 0.0883838 )
+transform = Transform( -6.12634e-08, 0, -2.87622, 0, 3.08466, 0, 1.40154, 0, -1.25724e-07, -0.00154508, -0.116107, 0.090036 )
 use_in_baked_light = true
 material/0 = SubResource( 3 )
 
 [node name="TsuruVentanas" parent="TsuruAlterado" index="2"]
-transform = Transform( -4.28295e-08, 0, -2.01078, 0, 2.1565, 0, 0.979824, 0, -8.78939e-08, 0, -0.0658267, 0.0883838 )
+transform = Transform( -6.12634e-08, 0, -2.87622, 0, 3.08466, 0, 1.40154, 0, -1.25724e-07, -0.00154508, -0.116107, 0.090036 )
 
 [node name="Tubos" parent="TsuruAlterado" index="3"]
-transform = Transform( -4.28295e-08, 0, -2.01078, 0, 2.1565, 0, 0.979824, 0, -8.78939e-08, 0, -0.0658267, 0.0441271 )
+transform = Transform( -6.12634e-08, 0, -2.87622, 0, 3.08466, 0, 1.40154, 0, -1.25724e-07, -0.00154508, -0.116107, 0.0267312 )
 
 [node name="Acelerometro" parent="TsuruAlterado" index="4"]
-transform = Transform( -2.77652e-08, -4.40419e-08, -2.01078, -1.58165, 0.404638, -2.18045e-15, 0.635194, 1.00756, -8.78939e-08, 0, 0.551592, -0.468882 )
+transform = Transform( -3.97154e-08, -6.29976e-08, -2.87622, -2.26239, 0.578795, -3.11892e-15, 0.908582, 1.44121, -1.25724e-07, -0.00154508, 0.767049, -0.707077 )
 
 [node name="volante" parent="TsuruAlterado" index="5"]
-transform = Transform( 2.30223, 1.48494e-07, -2.36774e-07, -4.11672e-07, 0.416327, -1.61326, -1.73814e-07, 0.980809, 0.684786, 0, 0.480307, -0.218997 )
+transform = Transform( 3.29311, 2.12406e-07, -3.38682e-07, -5.88856e-07, 0.595514, -2.30761, -2.48624e-07, 1.40295, 0.979519, -0.00154508, 0.665083, -0.349642 )
 
 [node name="PanelControl" parent="TsuruAlterado" index="6"]
-transform = Transform( 0.141366, -4.76574e-08, -2.0068, -2.1614, 7.38169e-08, -0.131254, 1.69709e-07, 0.979824, -8.77201e-08, 0, 1.12495, -0.157185 )
+transform = Transform( 0.20221, -6.81692e-08, -2.87053, -3.09167, 1.05588e-07, -0.187746, 2.42752e-07, 1.40154, -1.25475e-07, -0.00154508, 1.58718, -0.261226 )
 
 [node name="Llanta_D_Izq" parent="TsuruAlterado" index="7"]
-transform = Transform( -8.27857e-08, -2.01078, 7.68665e-08, 0, -8.78939e-08, -1.7585, 1.89392, -8.78939e-08, 3.35994e-15, -1.49613, -1.02296, -1.17127 )
+transform = Transform( -1.18417e-07, -2.87622, 1.0995e-07, 0, -1.25724e-07, -2.51536, 2.70906, -1.25724e-07, 4.80606e-15, -2.14161, -1.48519, -1.71177 )
 
 [node name="Llanta_D_Der" parent="TsuruAlterado" index="8"]
-transform = Transform( -8.27857e-08, -2.01078, 7.68665e-08, 0, -8.78939e-08, -1.7585, 1.89392, -8.78939e-08, 3.35994e-15, 1.50331, -1.02296, -1.17127 )
+transform = Transform( -1.18417e-07, -2.87622, 1.0995e-07, 0, -1.25724e-07, -2.51536, 2.70906, -1.25724e-07, 4.80606e-15, 2.14879, -1.48519, -1.71177 )
 
 [node name="RayCast" type="RayCast" parent="TsuruAlterado"]
 transform = Transform( 7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 0, -1.687, 0 )
@@ -109,13 +214,13 @@ transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 0, 0 )
 shape = SubResource( 4 )
 
 [node name="Polvo" parent="TsuruAlterado" instance=ExtResource( 5 )]
-transform = Transform( 1.39253, 0, -2.13163e-13, 0, 1.39253, 0, 2.27374e-13, 0, 1.39253, -0.241698, -0.860495, 1.94576 )
+transform = Transform( 1.39253, 0, -2.13163e-13, 0, 1.39253, 0, 2.27374e-13, 0, 1.39253, -1.17325, -1.40731, 2.25461 )
 
 [node name="Particulas_gira" parent="TsuruAlterado" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, -1.42109e-13, 0, 1, 0, 1.63425e-13, 0, 0.999999, 0.668841, -0.628759, 0.88035 )
+transform = Transform( 0.885386, -0.464857, -1.63425e-13, 0.464857, 0.885386, 0, 1.42109e-13, -7.4607e-14, 0.999999, 2.43093, -0.352036, 2.50475 )
 
 [node name="Particulas_gira_derecha" parent="TsuruAlterado" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, -1.03504, 0, 0.922293 )
+transform = Transform( 0.82971, 0.558194, -1.42109e-14, -0.558194, 0.82971, 0, 1.42109e-14, 7.10543e-15, 1, -2.42601, 0.276723, 2.54669 )
 
 [node name="acelera" type="AudioStreamPlayer" parent="TsuruAlterado"]
 stream = ExtResource( 8 )
@@ -128,23 +233,27 @@ volume_db = -15.0
 pitch_scale = 0.86
 
 [node name="Sprites" type="Spatial" parent="TsuruAlterado"]
-transform = Transform( 1, 0, 0, 0, 0.943755, 0.330646, 0, -0.330646, 0.943755, -7.10543e-15, 1.93901, 1.17644 )
+transform = Transform( 1, 0, 0, 0, 0.943755, 0.330646, 0, -0.330646, 0.943755, 0, 2.42462, 1.93303 )
 
 [node name="Frontal" type="MeshInstance" parent="TsuruAlterado/Sprites"]
+transform = Transform( 1.45639, 0, 0, -7.10543e-15, 1.45639, 0, 0, 0, 1.45639, 0, 0, 0 )
 mesh = SubResource( 9 )
 material/0 = ExtResource( 9 )
 
 [node name="Derecha" type="MeshInstance" parent="TsuruAlterado/Sprites"]
+transform = Transform( 1.45639, 0, 0, -7.10543e-15, 1.45639, 0, 0, 0, 1.45639, 0, 0, 0 )
 visible = false
 mesh = SubResource( 9 )
 material/0 = ExtResource( 10 )
 
 [node name="Izquierda" type="MeshInstance" parent="TsuruAlterado/Sprites"]
+transform = Transform( 1.45639, 0, 0, -7.10543e-15, 1.45639, 0, 0, 0, 1.45639, 0, 0, 0 )
 visible = false
 mesh = SubResource( 9 )
 material/0 = ExtResource( 11 )
 
 [node name="velocimetro" type="RichTextLabel" parent="."]
+visible = false
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -217,6 +326,165 @@ scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Personaje" type="Control" parent="UI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -600.0
+margin_right = 800.0
+rect_scale = Vector2( 0.6, 0.6 )
+
+[node name="Personaje-1" type="TextureRect" parent="UI/Personaje"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 95.6952
+margin_top = 36.011
+margin_right = 405.695
+margin_bottom = 346.011
+texture = ExtResource( 14 )
+
+[node name="Personaje-2" type="TextureRect" parent="UI/Personaje"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 95.6952
+margin_top = 36.011
+margin_right = 405.695
+margin_bottom = 346.011
+texture = ExtResource( 22 )
+
+[node name="Personaje-3" type="TextureRect" parent="UI/Personaje"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 95.6952
+margin_top = 36.011
+margin_right = 405.695
+margin_bottom = 346.011
+texture = ExtResource( 21 )
+
+[node name="Personaje-4" type="TextureRect" parent="UI/Personaje"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 95.6952
+margin_top = 36.011
+margin_right = 405.695
+margin_bottom = 346.011
+texture = ExtResource( 23 )
+
+[node name="Marco" type="TextureRect" parent="UI/Personaje"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 51.8546
+margin_top = -9.37384
+margin_right = 382.855
+margin_bottom = 327.626
+texture = ExtResource( 13 )
+
+[node name="live" type="TextureRect" parent="UI/Personaje"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 96.6667
+margin_top = 36.6666
+margin_right = 173.667
+margin_bottom = 76.6666
+texture = ExtResource( 18 )
+
+[node name="Side" type="Control" parent="UI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -600.0
+margin_right = 600.0
+rect_scale = Vector2( 0.6, 0.6 )
+
+[node name="Sideimg" type="TextureRect" parent="UI/Side"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 406.667
+margin_top = 35.6667
+margin_right = 479.667
+margin_bottom = 346.667
+texture = ExtResource( 12 )
+
+[node name="SidePoderes" type="VBoxContainer" parent="UI/Side"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 410.0
+margin_top = 66.3334
+margin_right = 476.0
+margin_bottom = 278.333
+
+[node name="Poder-1" type="TextureRect" parent="UI/Side/SidePoderes"]
+margin_right = 66.0
+margin_bottom = 68.0
+texture = ExtResource( 16 )
+
+[node name="Poder-2" type="TextureRect" parent="UI/Side/SidePoderes"]
+margin_top = 72.0
+margin_right = 66.0
+margin_bottom = 140.0
+texture = ExtResource( 17 )
+
+[node name="Poder-3" type="TextureRect" parent="UI/Side/SidePoderes"]
+margin_top = 144.0
+margin_right = 66.0
+margin_bottom = 212.0
+texture = ExtResource( 15 )
+
+[node name="Barra-mana" type="TextureRect" parent="UI/Side"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 379.481
+margin_top = 94.3503
+margin_right = 419.481
+margin_bottom = 252.35
+texture = ExtResource( 20 )
+
+[node name="Mana" type="VBoxContainer" parent="UI/Side"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 381.667
+margin_top = 106.667
+margin_right = 421.667
+margin_bottom = 246.667
+
+[node name="mana-1" type="TextureRect" parent="UI/Side/Mana"]
+margin_right = 40.0
+margin_bottom = 32.0
+texture = ExtResource( 19 )
+
+[node name="mana-2" type="TextureRect" parent="UI/Side/Mana"]
+margin_top = 36.0
+margin_right = 40.0
+margin_bottom = 68.0
+texture = ExtResource( 19 )
+
+[node name="mana-3" type="TextureRect" parent="UI/Side/Mana"]
+margin_top = 72.0
+margin_right = 40.0
+margin_bottom = 104.0
+texture = ExtResource( 19 )
+
+[node name="mana-4" type="TextureRect" parent="UI/Side/Mana"]
+margin_top = 108.0
+margin_right = 40.0
+margin_bottom = 140.0
+texture = ExtResource( 19 )
+
+[node name="Caballo" type="AnimatedSprite" parent="UI"]
+position = Vector2( 869.741, 530.33 )
+frames = SubResource( 26 )
+frame = 5
+playing = true
+flip_h = true
 
 [connection signal="body_entered" from="TsuruAlterado/Area" to="." method="_on_Area_body_entered"]
 

@@ -200,7 +200,9 @@ func load_theme(theme: ConfigFile):
 	# Margin
 	var text_margin = theme.get_value('text', 'margin', Vector2(20, 10))
 	text_container.set('margin_left', text_margin.x)
-	text_container.set('margin_right', text_margin.x * -1)
+	# Cambio text_margin de la derecha
+#	text_container.set('margin_right', text_margin.x * -1)
+	text_container.set('margin_right', -20)
 	text_container.set('margin_top', text_margin.y)
 	text_container.set('margin_bottom', text_margin.y * -1)
 

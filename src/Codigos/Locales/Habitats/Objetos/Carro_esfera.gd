@@ -20,6 +20,13 @@ onready var _acelera_s = $TsuruAlterado/acelera
 onready var _sprite_frontal = $TsuruAlterado/Sprites/Frontal
 onready var _sprite_derecha = $TsuruAlterado/Sprites/Derecha
 onready var _sprite_izquierda = $TsuruAlterado/Sprites/Izquierda
+onready var _caballo = $UI/Caballo
+onready var _personaje_cam_1 = $"UI/Personaje/Personaje-1"
+onready var _personaje_cam_2 = $"UI/Personaje/Personaje-2"
+onready var _personaje_cam_3 = $"UI/Personaje/Personaje-3"
+onready var _personaje_cam_4 = $"UI/Personaje/Personaje-4"
+var _personaje_cam
+#onready var _personaje
 
 
 export var player_number:int = 1
@@ -38,6 +45,8 @@ export var turn_speed = 5
 # Below this speed, the car doesn't turn
 var turn_stop_limit = 0.75
 var frame:int = 0
+var frame_cam:int = 0
+var cam_count:int = 0
 
 # Variables for input values
 var speed_input = 0
@@ -65,7 +74,8 @@ func _ready():
 	input_names.accelerate = input_names.accelerate + '_' + str(player_number)
 	input_names.steer_left = input_names.steer_left + '_' + str(player_number)
 	input_names.steer_right = input_names.steer_right + '_' + str(player_number)
-
+	_personaje_cam = [_personaje_cam_1, _personaje_cam_2, _personaje_cam_3, _personaje_cam_4]
+	
 func _physics_process(_delta):
 	car_mesh.transform.origin = ball.transform.origin + sphere_offset
 	spring.transform.origin = ball.transform.origin + camara_offset
@@ -81,6 +91,7 @@ func _process(delta):
 	# Can't steer/accelerate when in the air
 #	_colision_carro.transform.origin = car_mesh.transform.origin
 	frame = (frame + 1)%5
+	frame_cam = (frame_cam + 1)%136
 	if not inicia_juego:
 		return
 	if not piso:	
@@ -95,14 +106,21 @@ func _process(delta):
 	rotate_input += Input.get_action_strength(input_names.steer_left)
 	rotate_input -= Input.get_action_strength(input_names.steer_right)
 	rotate_input *= deg2rad(steering)	
-	right_wheel.rotation.y = rotate_input*2 - 90
-	left_wheel.rotation.y = rotate_input*2 - 90
+	right_wheel.rotation.y = (rotate_input*4)+(PI/2)
+	left_wheel.rotation.y = (rotate_input*4)+(PI/2)
 	
-	camara.fov = clamp(lerp(camara.fov,ball.linear_velocity.length()*0.6,delta),46,60)
+	camara.fov = clamp(lerp(camara.fov,ball.linear_velocity.length()*0.6,delta),46,65)
 	
 	if frame == 4:
 		_velocimetro.bbcode_text = str(floor(ball.linear_velocity.length()*2)) + 'km/h'
+		_caballo.speed_scale = ball.linear_velocity.length()*0.01
 		_acelera_s.volume_db = clamp(lerp(_acelera_s.volume_db,((ball.linear_velocity.length()*0.13)-35),delta),-28,-18)
+		
+	if frame_cam == 135:
+		cam_count = floor(rand_range(0, _personaje_cam.size()))
+		for personaje in _personaje_cam:
+			personaje.visible = false
+		_personaje_cam[cam_count].visible = true
 
 	
 	if ball.linear_velocity.length() > turn_stop_limit:
@@ -118,7 +136,6 @@ func _process(delta):
 		# tilt body for effect
 		var t = -rotate_input*6 * ball.linear_velocity.length() / body_tilt
 		car_mesh.rotation.z = clamp(lerp(car_mesh.rotation.z, t, 3 * delta),-0.8,0.8)
-		print(car_mesh.rotation.z)
 		
 #		spring.rotation.z = lerp(spring.rotation.z, -t, 10 * delta)
 

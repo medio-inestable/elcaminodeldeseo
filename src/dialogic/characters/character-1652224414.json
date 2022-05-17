@@ -8,14 +8,14 @@
 	"name": "ele",
 	"nickname": "",
 	"nickname_bool": false,
-	"offset_x": 0,
-	"offset_y": -256,
+	"offset_x": 40,
+	"offset_y": -80,
 	"portraits": [
 		{
 			"name": "Default",
 			"path": "res://Recursos/Graficos/Sprites/prueba-rpg/personajes/ele.png"
 		}
 	],
-	"scale": 50,
-	"theme": "theme-1652225095.cfg"
+	"scale": 60,
+	"theme": "theme-1652753680.cfg"
 }
