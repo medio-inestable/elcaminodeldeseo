@@ -3,7 +3,8 @@ extends KinematicBody2D
 enum {
 	IDLE,
 	NEW_DIRECTION,
-	MOVE
+	MOVE,
+	ACT
 }
 
 export var walkspeed = 2.0
@@ -13,32 +14,45 @@ const TILESIZE = 16
 onready var anim_tree = $AnimationTree
 onready var anim_state = anim_tree.get("parameters/playback")
 
+export (NodePath) var _animations_n
+onready var _animations = get_node(_animations_n)
+
+
 var initialposition = Vector2(0,0)
 var inputdirection = Vector2(0,0)
 var moving = false
 var percentmovedtonexttile = 0.0
-var state = MOVE
+export var state = MOVE
 var directions = [Vector2.LEFT, Vector2.RIGHT, Vector2.DOWN, Vector2.UP]
-var direction = Vector2.ZERO
+export var direction = Vector2.ZERO
 
 var dialogo
 
 func _ready():
 	randomize()
-	dialogo =  Dialogic.start(_revuelve(dialogs))
-	dialogo.connect("dialogic_signal", self, "dialog_listener")	
+	if dialogs.size() > 0:
+		dialogo =  Dialogic.start(_revuelve(dialogs))
+		dialogo.connect("dialogic_signal", self, "dialog_listener")	
 	initialposition = position
+	if state == ACT:		
+		_animations.play('Princesa_entra')
+		pass
 	
 func _process(delta):
-	if moving == false:
-		process_player_input()
-	elif inputdirection != Vector2.ZERO:
-		anim_state.travel("Walk")
-		move(delta)
-	else:
-		anim_state.travel("Idle")
-		moving = false
+	if state == ACT:	
+		inputdirection = direction
 		
+		pass
+	else:
+		if moving == false:
+			process_player_input()
+		elif inputdirection != Vector2.ZERO:
+			anim_state.travel("Walk")
+			move(delta)
+		else:
+			anim_state.travel("Idle")
+			moving = false
+			
 func process_player_input():	
 	match state:
 		IDLE:
@@ -69,16 +83,18 @@ func move(delta):
 func _input(event):
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_Q:
-			randomize()
-			dialogo = Dialogic.start(_revuelve(dialogs))
-			dialogo.connect("dialogic_signal", self, "dialog_listener")	
-			add_child(dialogo)			
+			if dialogs.size() > 0:
+				randomize()
+				dialogo = Dialogic.start(_revuelve(dialogs))
+				dialogo.connect("dialogic_signal", self, "dialog_listener")	
+				add_child(dialogo)			
 			state = IDLE
 			$Timer.stop()
 
 func _on_Timer_timeout():
-	state = _revuelve([IDLE, NEW_DIRECTION, MOVE])
-	print(state)
+	if state != ACT:
+		state = _revuelve([IDLE, NEW_DIRECTION, MOVE])
+
 	
 func _revuelve(objeto):
 	randomize()
@@ -90,3 +106,7 @@ func dialog_listener(string):
 		"termina":
 			print('termina')
 			$Timer.start(-1)
+
+func _act_animation(travel:String):
+	anim_tree.set("parameters/"+travel+"/blend_position", inputdirection)
+	anim_state.travel(travel)
