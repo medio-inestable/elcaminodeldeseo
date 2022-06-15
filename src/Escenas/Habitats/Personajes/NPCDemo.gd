@@ -110,3 +110,8 @@ func dialog_listener(string):
 func _act_animation(travel:String):
 	anim_tree.set("parameters/"+travel+"/blend_position", inputdirection)
 	anim_state.travel(travel)
+
+func _call_dialog(dialog:String):
+	dialogo =  Dialogic.start(dialog)
+	dialogo.connect("dialogic_signal", self, "dialog_listener")	
+	add_child(dialogo)
