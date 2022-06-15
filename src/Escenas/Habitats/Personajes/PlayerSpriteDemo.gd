@@ -1,10 +1,11 @@
 extends KinematicBody2D
 
 export var walkspeed = 4.0
-const TILESIZE = 16
+const TILESIZE = 32
 
 onready var anim_tree = $AnimationTree
 onready var anim_state = anim_tree.get("parameters/playback")
+onready var ray = $RayCast2D
 
 var initialposition = Vector2(0,0)
 var inputdirection = Vector2(0,0)
@@ -39,9 +40,15 @@ func process_player_input():
 		
 func move(delta):
 	percentmovedtonexttile += walkspeed * delta
-	if percentmovedtonexttile >= 1.0:
-		position = initialposition + (TILESIZE * inputdirection)
-		percentmovedtonexttile = 0.0
-		moving = false
+	var desired_step: Vector2 = inputdirection * TILESIZE / 2
+	ray.cast_to = desired_step
+	ray.force_raycast_update()
+	if !ray.is_colliding():
+		if percentmovedtonexttile >= 1.0:
+			position = initialposition + (TILESIZE * inputdirection)
+			percentmovedtonexttile = 0.0
+			moving = false
+		else:
+			position = initialposition + (TILESIZE * inputdirection * percentmovedtonexttile)
 	else:
-		position = initialposition + (TILESIZE * inputdirection * percentmovedtonexttile)
+		moving = false

@@ -226,7 +226,7 @@ texture = ExtResource( 1 )
 centered = false
 hframes = 12
 vframes = 8
-frame = 13
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 16, 16 )
@@ -250,3 +250,7 @@ active = true
 parameters/playback = SubResource( 24 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Walk/blend_position = Vector2( 0, 0 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 16, 16 )
+cast_to = Vector2( 0, 16 )
