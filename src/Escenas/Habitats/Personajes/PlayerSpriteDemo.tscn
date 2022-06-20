@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Recursos/Graficos/Sprites/spritesheetdemo.png" type="Texture" id=1]
 [ext_resource path="res://Escenas/Habitats/Personajes/PlayerSpriteDemo.gd" type="Script" id=2]
@@ -19,6 +19,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -83,6 +95,130 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 37 ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "turnDown"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finished_turning"
+} ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "turnLeft"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 12, 13 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finished_turning"
+} ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "turnRight"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 24, 25 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finished_turning"
+} ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "turnUp"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 36, 37 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finished_turning"
+} ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -171,12 +307,35 @@ animation = "idleup"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=15]
 blend_point_0/node = SubResource( 11 )
-blend_point_0/pos = Vector2( -1, 0 )
+blend_point_0/pos = Vector2( 1, 0 )
 blend_point_1/node = SubResource( 12 )
-blend_point_1/pos = Vector2( 1, 0 )
+blend_point_1/pos = Vector2( -1, 0 )
 blend_point_2/node = SubResource( 13 )
 blend_point_2/pos = Vector2( 0, 1 )
 blend_point_3/node = SubResource( 14 )
+blend_point_3/pos = Vector2( 0, -1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "turnLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=30]
+animation = "turnDown"
+
+[sub_resource type="AnimationNodeAnimation" id=31]
+animation = "turnRight"
+
+[sub_resource type="AnimationNodeAnimation" id=32]
+animation = "turnUp"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=33]
+blend_point_0/node = SubResource( 29 )
+blend_point_0/pos = Vector2( 1, 0 )
+blend_point_1/node = SubResource( 30 )
+blend_point_1/pos = Vector2( 0, 1 )
+blend_point_2/node = SubResource( 31 )
+blend_point_2/pos = Vector2( -1, 0 )
+blend_point_3/node = SubResource( 32 )
 blend_point_3/pos = Vector2( 0, -1 )
 blend_mode = 1
 
@@ -194,9 +353,9 @@ animation = "walkup"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=20]
 blend_point_0/node = SubResource( 16 )
-blend_point_0/pos = Vector2( -1, 0 )
+blend_point_0/pos = Vector2( 1, 0 )
 blend_point_1/node = SubResource( 17 )
-blend_point_1/pos = Vector2( 1, 0 )
+blend_point_1/pos = Vector2( -1, 0 )
 blend_point_2/node = SubResource( 18 )
 blend_point_2/pos = Vector2( 0, 1 )
 blend_point_3/node = SubResource( 19 )
@@ -207,14 +366,24 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+
 [sub_resource type="AnimationNodeStateMachine" id=23]
 states/Idle/node = SubResource( 15 )
 states/Idle/position = Vector2( 81, 11 )
+states/Turn/node = SubResource( 33 )
+states/Turn/position = Vector2( 177, 91.4346 )
 states/Walk/node = SubResource( 20 )
 states/Walk/position = Vector2( 280, 11 )
-transitions = [ "Idle", "Walk", SubResource( 21 ), "Walk", "Idle", SubResource( 22 ) ]
+transitions = [ "Idle", "Walk", SubResource( 21 ), "Walk", "Idle", SubResource( 22 ), "Idle", "Turn", SubResource( 34 ), "Turn", "Idle", SubResource( 35 ), "Turn", "Walk", SubResource( 36 ), "Walk", "Turn", SubResource( 37 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -184, -121 )
+graph_offset = Vector2( -184, -73.5654 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 
@@ -224,6 +393,7 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
+flip_h = true
 hframes = 12
 vframes = 8
 frame = 1
@@ -238,6 +408,10 @@ anims/idledown = SubResource( 2 )
 anims/idleleft = SubResource( 5 )
 anims/idleright = SubResource( 6 )
 anims/idleup = SubResource( 3 )
+anims/turnDown = SubResource( 25 )
+anims/turnLeft = SubResource( 26 )
+anims/turnRight = SubResource( 27 )
+anims/turnUp = SubResource( 28 )
 anims/walkdown = SubResource( 7 )
 anims/walkright = SubResource( 8 )
 anims/walkup = SubResource( 9 )
@@ -246,11 +420,16 @@ anims/walleft = SubResource( 10 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 23 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/playback = SubResource( 24 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
-parameters/Walk/blend_position = Vector2( 0, 0 )
+parameters/Turn/blend_position = Vector2( -0.000781834, 0.00578034 )
+parameters/Walk/blend_position = Vector2( -0.000781834, -0.992857 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( 16, 16 )
+enabled = true
 cast_to = Vector2( 0, 16 )
+collide_with_areas = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
