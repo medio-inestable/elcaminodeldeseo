@@ -25,6 +25,8 @@ onready var _personaje_cam_1 = $"UI/Personaje/Personaje-1"
 onready var _personaje_cam_2 = $"UI/Personaje/Personaje-2"
 onready var _personaje_cam_3 = $"UI/Personaje/Personaje-3"
 onready var _personaje_cam_4 = $"UI/Personaje/Personaje-4"
+onready var _cabeza_movimiento = $"TsuruAlterado/gato/Roundcube"
+onready var _tween = $TsuruAlterado/gato/Tween
 var _personaje_cam
 #onready var _personaje
 
@@ -108,6 +110,9 @@ func _process(delta):
 	rotate_input *= deg2rad(steering)	
 	right_wheel.rotation.y = (rotate_input*4)+(PI/2)
 	left_wheel.rotation.y = (rotate_input*4)+(PI/2)
+	print (left_wheel.rotation.y)
+	_cabeza_movimiento.rotation.x = (rotate_input)*4
+	
 	
 	camara.fov = clamp(lerp(camara.fov,ball.linear_velocity.length()*0.6,delta),46,65)
 	
