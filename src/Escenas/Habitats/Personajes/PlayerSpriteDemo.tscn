@@ -1,10 +1,10 @@
 [gd_scene load_steps=40 format=2]
 
-[ext_resource path="res://Recursos/Graficos/Sprites/spritesheetdemo.png" type="Texture" id=1]
+[ext_resource path="res://Recursos/Graficos/Sprites/spritesgatoc.png" type="Texture" id=1]
 [ext_resource path="res://Escenas/Habitats/Personajes/PlayerSpriteDemo.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 16 )
+extents = Vector2( 18, 18 )
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -394,12 +394,11 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 centered = false
 flip_h = true
-hframes = 12
-vframes = 8
+hframes = 10
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 16, 16 )
+position = Vector2( 18, 18 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -426,7 +425,7 @@ parameters/Turn/blend_position = Vector2( -0.000781834, 0.00578034 )
 parameters/Walk/blend_position = Vector2( -0.000781834, -0.992857 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( 16, 16 )
+position = Vector2( 18, 18 )
 enabled = true
 cast_to = Vector2( 0, 16 )
 collide_with_areas = true
