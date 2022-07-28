@@ -46,7 +46,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 1 ]
+"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -62,7 +62,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 13 ]
+"values": [ 9 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -78,7 +78,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 25 ]
+"values": [ 6 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -94,7 +94,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 37 ]
+"values": [ 3 ]
 }
 
 [sub_resource type="Animation" id=25]
@@ -111,7 +111,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.05 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0, 1 ]
+"values": [ 1, 0 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -142,7 +142,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.05 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 12, 13 ]
+"values": [ 8, 9 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -173,7 +173,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.05 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 24, 25 ]
+"values": [ 7, 6 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -204,7 +204,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.05 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 36, 37 ]
+"values": [ 4, 3 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -236,7 +236,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 1 ]
+"values": [ 0, 1, 0, 2 ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -254,7 +254,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 24, 25, 26, 25 ]
+"values": [ 6, 7, 6, 7 ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -272,7 +272,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 36, 37, 38, 37 ]
+"values": [ 3, 4, 3, 5 ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -290,7 +290,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 12, 13, 14, 13 ]
+"values": [ 9, 8, 9, 8 ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=11]
@@ -380,7 +380,7 @@ states/Idle/position = Vector2( 81, 11 )
 states/Turn/node = SubResource( 33 )
 states/Turn/position = Vector2( 177, 91.4346 )
 states/Walk/node = SubResource( 20 )
-states/Walk/position = Vector2( 280, 11 )
+states/Walk/position = Vector2( 280.667, 11 )
 transitions = [ "Idle", "Walk", SubResource( 21 ), "Walk", "Idle", SubResource( 22 ), "Idle", "Turn", SubResource( 34 ), "Turn", "Idle", SubResource( 35 ), "Turn", "Walk", SubResource( 36 ), "Walk", "Turn", SubResource( 37 ) ]
 start_node = "Idle"
 graph_offset = Vector2( -184, -73.5654 )
@@ -422,7 +422,7 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 24 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Turn/blend_position = Vector2( -0.000781834, 0.00578034 )
-parameters/Walk/blend_position = Vector2( -0.000781834, -0.992857 )
+parameters/Walk/blend_position = Vector2( -0.997621, 0.00196075 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( 18, 18 )
