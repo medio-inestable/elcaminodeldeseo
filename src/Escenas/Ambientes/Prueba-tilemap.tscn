@@ -72,7 +72,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 4.7 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "timeline-prueba" ],
+"args": [ "timeline-exe" ],
 "method": "_call_dialog"
 } ]
 }
@@ -476,7 +476,7 @@ tile_data = PoolIntArray( 196610, 20, 0, 196615, 20, 0, 196630, 20, 0, 589840, 2
 
 [node name="NPC" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 448, 224 )
-dialogs = [ "timeline-prueba" ]
+dialogs = [ "timeline-exe" ]
 
 [node name="NPC2" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 640, 240 )
